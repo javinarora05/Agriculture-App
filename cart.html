@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart | KhetiMitra</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-gray-50">
+    <custom-navbar></custom-navbar>
+    
+    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900">Your Shopping Cart (<span id="cart-count">0</span>)</h1>
+            <a href="marketplace.html" class="text-green-600 hover:text-green-800 font-medium flex items-center">
+                <i data-feather="arrow-left" class="w-4 h-4 mr-1"></i> Continue Shopping
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <!-- Cart items will be dynamically inserted here -->
+                    <div id="cart-items" class="divide-y divide-gray-200">
+                        <!-- Example empty state -->
+                        <div class="p-8 text-center">
+                            <i data-feather="shopping-cart" class="w-12 h-12 mx-auto text-gray-400"></i>
+                            <h3 class="mt-4 text-lg font-medium text-gray-900">Your cart is empty</h3>
+                            <p class="mt-1 text-gray-500">Add some seeds to get started!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-xl shadow-md p-6 sticky top-6">
+                    <h2 class="text-lg font-bold text-gray-900 mb-4">Order Summary</h2>
+                    
+                    <div class="space-y-3 mb-6">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Subtotal</span>
+                            <span class="font-medium" id="subtotal">₹0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Shipping</span>
+                            <span class="font-medium" id="shipping">₹50</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Website Handling Fee <span class="text-xs">(5%)</span></span>
+                            <span class="font-medium" id="handling-fee">₹0</span>
+                        </div>
+                        <div class="flex justify-between border-t border-gray-200 pt-3">
+                            <span class="text-gray-900 font-bold">Total</span>
+                            <span class="text-gray-900 font-bold" id="total">₹50</span>
+                        </div>
+                    </div>
+
+                    <button id="checkout-btn" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-lg font-medium shadow-sm transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                        Proceed to Checkout
+                    </button>
+
+                    <div class="mt-4 flex items-center justify-center">
+                        <span class="text-gray-600 mr-2">or</span>
+                        <a href="marketplace.html" class="text-green-600 hover:text-green-800 font-medium">
+                            Continue Shopping
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <custom-footer></custom-footer>
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="components/qr-checkout.js"></script>
+    <script src="script.js"></script>
+    <qr-checkout id="qrCheckout"></qr-checkout>
+<script>
+        feather.replace();
+        
+        // Cart management functions
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartDisplay();
+            
+            // Handle checkout button
+            const checkoutBtn = document.getElementById('checkout-btn');
+            const qrCheckout = document.getElementById('qrCheckout');
+            
+            checkoutBtn.addEventListener('click', () => {
+                const total = parseFloat(document.getElementById('total').textContent.replace(/[^\d.]/g, ''));
+                qrCheckout.setAttribute('amount', total);
+                qrCheckout.show();
+            });
+
+            // When QR checkout signals success, save an order to localStorage
+            qrCheckout.addEventListener('qr-payment-success', () => {
+                const cart = getCart();
+                if (!cart || !cart.length) {
+                    showToast('Cart is empty — nothing to place', 'error');
+                    return;
+                }
+
+                const subtotal = cart.reduce((s, it) => s + (it.price * it.quantity), 0);
+                const shipping = subtotal > 2000 ? 0 : 50;
+                const handlingFee = Math.round(subtotal * 0.05);
+                const total = subtotal + shipping + handlingFee;
+
+                const orders = getFromLocalStorage('orders') || [];
+                const order = {
+                    id: 'ORD-' + Date.now(),
+                    date: new Date().toISOString(),
+                    items: cart,
+                    subtotal,
+                    shipping,
+                    handlingFee,
+                    total,
+                    status: 'Placed'
+                };
+
+                orders.push(order);
+                saveToLocalStorage('orders', orders);
+
+                // clear cart and update UI
+                saveToLocalStorage('cart', []);
+                updateCartDisplay();
+                updateCartCounter();
+                showToast('Order placed — redirecting to Orders', 'success');
+                setTimeout(() => { window.location.href = 'orders.html'; }, 900);
+            });
+        });
+
+        function updateCartDisplay() {
+            const cart = getCart();
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartCountElement = document.getElementById('cart-count');
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="p-8 text-center">
+                        <i data-feather="shopping-cart" class="w-12 h-12 mx-auto text-gray-400"></i>
+                        <h3 class="mt-4 text-lg font-medium text-gray-900">Your cart is empty</h3>
+                        <p class="mt-1 text-gray-500">Add some seeds to get started!</p>
+                    </div>
+                `;
+                document.getElementById('checkout-btn').disabled = true;
+                cartCountElement.textContent = '0';
+                updateTotals(0);
+                feather.replace();
+                return;
+            }
+
+            // Populate cart items
+            cartItemsContainer.innerHTML = '';
+            let subtotal = 0;
+            
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                cartItemsContainer.innerHTML += `
+                    <div class="p-4 flex flex-col sm:flex-row" data-id="${item.id}">
+                        <div class="flex-shrink-0">
+                            <img src="${item.image}" alt="${item.name}" class="w-24 h-24 object-cover rounded-lg">
+                        </div>
+                        <div class="mt-4 sm:mt-0 sm:ml-6 flex-grow">
+                            <div class="flex justify-between">
+                                <h3 class="text-lg font-medium text-gray-900">${item.name}</h3>
+                                <p class="text-lg font-medium text-gray-900">₹${itemTotal.toLocaleString()}</p>
+                            </div>
+                            <p class="mt-1 text-gray-600">${item.category}</p>
+                            <div class="mt-2 flex items-center">
+                                <span class="text-gray-600 mr-2">Qty:</span>
+                                <div class="flex items-center border border-gray-300 rounded-md">
+                                    <button class="quantity-btn px-2 py-1 text-gray-600 hover:bg-gray-100" data-action="decrease" data-id="${item.id}">
+                                        <i data-feather="minus" class="w-4 h-4"></i>
+                                    </button>
+                                    <span class="quantity px-3 py-1">${item.quantity}</span>
+                                    <button class="quantity-btn px-2 py-1 text-gray-600 hover:bg-gray-100" data-action="increase" data-id="${item.id}">
+                                        <i data-feather="plus" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                                <button class="ml-4 text-red-600 hover:text-red-800 flex items-center remove-btn" data-id="${item.id}">
+                                    <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Update totals and count
+            cartCountElement.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+            updateTotals(subtotal);
+            document.getElementById('checkout-btn').disabled = false;
+            
+            // Add event listeners to new buttons
+            document.querySelectorAll('.quantity-btn').forEach(btn => {
+                btn.addEventListener('click', handleQuantityChange);
+            });
+            
+            document.querySelectorAll('.remove-btn').forEach(btn => {
+                btn.addEventListener('click', handleRemoveItem);
+            });
+            
+            feather.replace();
+        }
+
+        function handleQuantityChange(e) {
+            const action = e.currentTarget.getAttribute('data-action');
+            const id = e.currentTarget.getAttribute('data-id');
+            updateCartItem(id, action === 'increase' ? 1 : -1);
+        }
+
+        function handleRemoveItem(e) {
+            const id = e.currentTarget.getAttribute('data-id');
+            removeFromCart(id);
+        }
+
+        function updateTotals(subtotal) {
+            const shipping = subtotal > 2000 ? 0 : 50;
+            const handlingFee = Math.round(subtotal * 0.05);
+            const total = subtotal + shipping + handlingFee;
+            
+            document.getElementById('subtotal').textContent = `₹${subtotal.toLocaleString()}`;
+            document.getElementById('shipping').textContent = shipping === 0 ? 'FREE' : `₹${shipping}`;
+            document.getElementById('handling-fee').textContent = `₹${handlingFee.toLocaleString()}`;
+            document.getElementById('total').textContent = `₹${total.toLocaleString()}`;
+        }
+    </script>
+</body>
+</html>

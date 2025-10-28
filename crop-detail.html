@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rice Cultivation Guide | KhetiMitra</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .fade-in { animation: fadeInPage 1.2s cubic-bezier(0.4,0,0.2,1); }
+        @keyframes fadeInPage { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+        .infinite-pulse { animation: pulse 1.5s infinite alternate cubic-bezier(0.4,0,0.2,1); }
+        @keyframes pulse { from { opacity: 1; transform: scale(1); } to { opacity: 0.7; transform: scale(1.08); } }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <custom-navbar></custom-navbar>
+    
+    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <!-- Crop Header -->
+        <div class="flex flex-col md:flex-row gap-8 mb-10">
+            <div class="md:w-1/3">
+                <div class="rounded-xl overflow-hidden shadow-lg">
+                    <img id="crop-hero" src="http://static.photos/agriculture/640x360/1" alt="Rice field" class="w-full h-auto">
+                </div>
+            </div>
+            <div class="md:w-2/3">
+                <div class="flex items-center gap-2 mb-2">
+                    <span id="crop-category" class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Cereal</span>
+                    <span id="crop-scientific" class="text-gray-500 text-sm">Scientific Name: Oryza sativa</span>
+                </div>
+                <h1 id="crop-title" class="text-4xl font-bold text-gray-900 mb-3">Rice (Pusa Basmati 1121)</h1>
+                <p class="text-lg text-gray-600 mb-4">Premium aromatic basmati rice variety with extra long grains and distinctive fragrance.</p>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div class="bg-white p-3 rounded-lg shadow-sm">
+                        <div class="text-gray-500 text-sm mb-1">Growing Season</div>
+                        <div class="font-medium">Kharif (June-Nov)</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg shadow-sm">
+                        <div class="text-gray-500 text-sm mb-1">Duration</div>
+                        <div class="font-medium">120-150 days</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg shadow-sm">
+                        <div class="text-gray-500 text-sm mb-1">Yield Potential</div>
+                        <div class="font-medium">5-6 ton/ha</div>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg shadow-sm">
+                        <div class="text-gray-500 text-sm mb-1">Market Price</div>
+                        <div class="font-medium">₹1,850-2,200/q</div>
+                    </div>
+                </div>
+</div>
+        </div>
+        
+        <!-- Main Content Sections -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2">
+                <!-- Planting Guide -->
+                <section id="planting" class="bg-white rounded-xl shadow-md p-6 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                        <i data-feather="sun" class="w-5 h-5 mr-2 text-green-600"></i>
+                        Planting Guide
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <h3 class="font-medium text-gray-900 mb-2">Soil Requirements</h3>
+                            <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                                <li>Clay loam or silt loam soils with good water retention</li>
+                                <li>pH range: 5.5-6.5 (slightly acidic)</li>
+                                <li>Soil should have good organic matter (2-3%)</li>
+                                <li>Fields should be level for uniform water distribution</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-gray-900 mb-2">Climate Conditions</h3>
+                            <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                                <li>Temperature: 20-35°C (ideal 25-30°C)</li>
+                                <li>Annual rainfall: 150-300 cm</li>
+                                <li>Requires full sunlight (6-8 hours daily)</li>
+                                <li>High humidity (70-80%) during growth period</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <h3 class="font-medium text-gray-900 mb-2">Planting Process</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <span class="bg-green-100 text-green-800 w-6 h-6 rounded-full flex items-center justify-center text-sm font-medium">1</span>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="font-medium text-gray-900">Land Preparation</h4>
+                                <p class="text-sm text-gray-600">Plow field 2-3 times to fine tilth, level properly, and construct bunds (15-20cm height) around field.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <span class="bg-green-100 text-green-800 w-6 h-6 rounded-full flex items-center justify-center text-sm font-medium">2</span>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="font-medium text-gray-900">Nursery Preparation</h4>
+                                <p class="text-sm text-gray-600">Soak seeds for 12 hours, incubate for 24 hours. Sow 1kg seeds/25m² nursery area. Maintain 2-3cm water depth.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <span class="bg-green-100 text-green-800 w-6 h-6 rounded-full flex items-center justify-center text-sm font-medium">3</span>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="font-medium text-gray-900">Transplanting</h4>
+                                <p class="text-sm text-gray-600">Transplant 21-25 day old seedlings at 2-3 seedlings/hill, 20x15cm spacing when nursery is 25-30cm tall.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Crop Care -->
+                <section id="care" class="bg-white rounded-xl shadow-md p-6 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                        <i data-feather="droplet" class="w-5 h-5 mr-2 text-green-600"></i>
+                        Water & Nutrient Management
+                    </h2>
+                    <div class="mb-6">
+                        <h3 class="font-medium text-gray-900 mb-2">Water Requirements</h3>
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                            <div class="grid grid-cols-3 gap-4 text-sm text-gray-800">
+<div>
+                                    <div class="font-medium mb-1">Growth Stage</div>
+                                    <div>Initial (0-20d)</div>
+                                    <div>Vegetative (20-50d)</div>
+                                    <div>Reproductive (50-90d)</div>
+                                    <div>Ripening (90-120d)</div>
+                                </div>
+                                <div>
+                                    <div class="font-medium mb-1">Water Depth (cm)</div>
+                                    <div>2-3</div>
+                                    <div>5-7</div>
+                                    <div>5-7</div>
+                                    <div>2-3 (drain 15d before harvest)</div>
+                                </div>
+                                <div>
+                                    <div class="font-medium mb-1">Frequency</div>
+                                    <div>Continuous</div>
+                                    <div>Continuous</div>
+                                    <div>Continuous</div>
+                                    <div>Gradual reduction</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="font-medium text-gray-900 mb-2">Fertilizer Schedule</h3>
+                    <div class="overflow-x-auto">
+                            <table class="min-w-full border border-gray-200 table-enhanced">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-800 font-serif">Fertilizer</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-800 font-serif">Dose (kg/ha)</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-800 font-serif">Application Time</th>
+                                        <th class="px-4 py-2 text-left text-sm font-medium text-gray-800 font-serif">Method</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-4 py-2 text-sm text-gray-800 font-serif">Farmyard Manure</td>
+                                        <td class="px-4 py-2 text-sm text-gray-800 font-serif">10-12 tons</td>
+                                        <td class="px-4 py-2 text-sm text-gray-800 font-serif">3 weeks before planting</td>
+                                        <td class="px-4 py-2 text-sm text-gray-800 font-serif">Broadcast & incorporate</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2 text-sm text-gray-800 font-serif">Urea (N)</td>
+                                        <td class="px-4 py-2 text-sm text-gray-800 font-serif">120</td>
+                                        <td class="px-4 py-2 text-sm text-gray-800 font-serif">1/3 basal, 1/3 tillering, 1/3 panicle</td>
+                                        <td class="px-4 py-2 text-sm text-gray-800 font-serif">Top dressing</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2 text-sm text-gray-800 font-serif">DAP (P)</td>
+                                        <td class="px-4 py-2 text-sm text-gray-800 font-serif">60</td>
+                                        <td class="px-4 py-2 text-sm text-gray-800 font-serif">At transplanting</td>
+                                        <td class="px-4 py-2 text-sm text-gray-800 font-serif">Basal application</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2 text-sm text-gray-800 font-serif">MOP (K)</td>
+                                        <td class="px-4 py-2 text-sm text-gray-800 font-serif">40</td>
+                                        <td class="px-4 py-2 text-sm text-gray-800 font-serif">1/2 basal, 1/2 panicle</td>
+                                        <td class="px-4 py-2 text-sm text-gray-800 font-serif">Top dressing</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+</div>
+</section>
+                
+                <!-- Harvesting -->
+                <section id="harvest" class="bg-white rounded-xl shadow-md p-6 mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                        <i data-feather="package" class="w-5 h-5 mr-2 text-green-600"></i>
+                        Harvesting & Post-Harvest
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h3 class="font-medium text-gray-900 mb-2">Harvest Timing</h3>
+                            <p class="text-sm text-gray-700 font-serif">Harvest when 80-85% of grains turn straw color (30-35 days after flowering). Moisture content should be 20-25%.</p>
+</div>
+                        
+                        <div>
+                            <h3 class="font-medium text-gray-900 mb-2">Harvest Methods</h3>
+                            <ul class="list-disc pl-5 space-y-1 text-gray-700 font-serif">
+                                <li>Manual harvesting with sickle (common for basmati)</li>
+                                <li>Combine harvesters can be used for large fields</li>
+                                <li>Cut 15-20cm above ground level to maintain quality
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                                    <div>
+                                        <div class="font-medium mb-1">Drying</div>
+                                        <p>Spread in thin layers (5-7cm) on clean surface for 2-3 sunny days</p>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium mb-1">Threshing</div>
+                                        <p>Manual beating or mechanical threshers at 400-500 rpm</p>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium mb-1">Storage</div>
+                                        <p>Store at 12-14% moisture in clean, rat-proof godowns</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Pests & Diseases -->
+                <section id="diseases" class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                        <i data-feather="shield" class="w-5 h-5 mr-2 text-green-600"></i>
+                        Pest & Disease Management
+                    </h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="font-medium text-gray-900 mb-2">Major Pests</h3>
+                            <div class="space-y-3">
+                                <div class="border border-gray-200 rounded-lg p-3">
+                                    <div class="flex items-center mb-1">
+                                        <i data-feather="alert-triangle" class="w-4 h-4 text-red-500 mr-2"></i>
+                                        <h4 class="font-medium">Stem Borer</h4>
+                                    </div>
+                                <p class="text-sm text-gray-700 mb-2 font-serif">White heads appear during milk stage. Larvae bore into stems.</p>
+<div class="text-sm bg-red-50 border border-red-200 rounded p-2">
+                                        <strong>Control:</strong> Remove infected plants, spray Chlorantraniliprole 18.5% SC (15ml/10L water) at 30 and 50 DAT
+                                    </div>
+                                </div>
+                                
+                                <div class="border border-gray-200 rounded-lg p-3">
+                                    <div class="flex items-center mb-1">
+                                        <i data-feather="alert-triangle" class="w-4 h-4 text-red-500 mr-2"></i>
+                                        <h4 class="font-medium">Brown Plant Hopper</h4>
+                                    </div>
+                                <p class="text-sm text-gray-700 mb-2 font-serif">Causes "hopper burn" - yellowing and drying from field margins.</p>
+<div class="text-sm bg-red-50 border border-red-200 rounded p-2">
+                                        <strong>Control:</strong> Avoid excess nitrogen, spray Imidacloprid 17.8% SL (0.3ml/L water), maintain 5cm water for 3-4 days
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="font-medium text-gray-900 mb-2">Common Diseases</h3>
+                            <div class="space-y-3">
+                                <div class="border border-gray-200 rounded-lg p-3">
+                                    <div class="flex items-center mb-1">
+                                        <i data-feather="alert-circle" class="w-4 h-4 text-orange-500 mr-2"></i>
+                                        <h4 class="font-medium">Blast (Pyricularia oryzae)</h4>
+                                    </div>
+                                    <p class="text-sm text-gray-700 mb-2 font-serif">Diamond-shaped lesions on leaves, neck rot causes blank panicles.</p>
+<div class="text-sm bg-orange-50 border border-orange-200 rounded p-2">
+                                        <strong>Control:</strong> Grow resistant varieties, avoid excess N, spray Tricyclazole 75% WP (0.6g/L
+                                    </div>
+                                </div>
+                                
+                                <div class="border border-gray-200 rounded-lg p-3">
+                                    <div class="flex items-center mb-1">
+                                        <i data-feather="alert-circle" class="w-4 h-4 text-orange-500 mr-2"></i>
+                                        <h4 class="font-medium">Bacterial Leaf Blight</h4>
+                                    </div>
+                                    <p class="text-sm text-gray-700 mb-2 font-serif">Yellow water-soaked lesions spreading from leaf tips.</p>
+<div class="text-sm bg-orange-50 border border-orange-200 rounded p-2">
+                                        <strong>Control:</strong> Avoid wounding plants, spray Streptocycline 500ppm + Copper oxychloride 0.3%
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-xl shadow-md p-6 sticky top-6">
+                    <h3 class="font-bold text-gray-900 mb-4">Quick Facts</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-medium text-gray-900 mb-1">Optimal Temperature</h4>
+                            <p class="text-sm text-gray-600">25-30°C (germination: min 10°C)</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium text-gray-900 mb-1">Water Requirement</h4>
+                            <p class="text-sm text-gray-600">1,200-1,500mm per crop cycle</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium text-gray-900 mb-1">Seed Rate</h4>
+                            <p class="text-sm text-gray-600">20-25kg/ha for transplanting</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium text-gray-900 mb-1">Plant Population</h4>
+                            <p class="text-sm text-gray-600">33-50 plants/m² (20x15cm spacing)</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-medium text-gray-900 mb-1">Growth Duration</h4>
+                            <p class="text-sm text-gray-600">120-150 days (varies by variety)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <h3 class="font-bold text-gray-900 mb-2">Seasonal Planner</h3>
+                        <div class="border border-gray-200 rounded-lg overflow-hidden">
+                            <table class="min-w-full">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500">Month</th>
+                                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500">Activity</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200 text-xs">
+                                    <tr>
+                                        <td class="px-3 py-2 whitespace-nowrap">June</td>
+                                        <td class="px-3 py-2">Land prep, nursery sowing</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-3 py-2 whitespace-nowrap">July</td>
+                                        <td class="px-3 py-2">Transplanting, basal fertilizer</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-3 py-2 whitespace-nowrap">Aug</td>
+                                        <td class="px-3 py-2">Tiller fertilizer, pest control</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-3 py-2 whitespace-nowrap">Sept</td>
+                                        <td class="px-3 py-2">Panicle fertilizer, water management</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-3 py-2 whitespace-nowrap">Oct-Nov</td>
+                                        <td class="px-3 py-2">Harvesting, drying, storage</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+</div>
+            </div>
+        </div>
+    </main>
+    
+    <custom-footer></custom-footer>
+    
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

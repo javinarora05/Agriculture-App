@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | KhetiMitra</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-gray-50">
+    <custom-navbar></custom-navbar>
+    
+    <main class="max-w-md mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-xl shadow-md p-8">
+            <div class="text-center mb-8">
+                <div class="flex justify-center mb-4">
+                    <i data-feather="leaf" class="w-12 h-12 text-green-600"></i>
+                </div>
+                <h1 id="page-title" class="text-2xl font-bold text-gray-900 mb-2">Welcome Back</h1>
+                <p id="page-subtitle" class="text-gray-600">Sign in to your KhetiMitra account</p>
+            </div>
+            
+            <form id="login-form" class="space-y-6">
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1" id="email-label">Email Address</label>
+                    <input type="email" id="email" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500" placeholder="Enter your email">
+                </div>
+                
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1" id="password-label">Password</label>
+                    <input type="password" id="password" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500" placeholder="Enter your password">
+                </div>
+                
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center">
+                        <input type="checkbox" class="rounded text-green-600 focus:ring-green-500">
+                        <span id="remember-me" class="ml-2 text-sm text-gray-700">Remember me</span>
+                    </label>
+                    <a href="#" id="forgot-password" class="text-sm text-green-600 hover:text-green-800">Forgot password?</a>
+                </div>
+                
+                <button type="submit" id="login-button" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg font-medium shadow-sm transition">
+                    Sign In
+                </button>
+            </form>
+            
+            <div class="mt-6">
+                <div class="relative">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-300"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-white text-gray-500">Or continue with</span>
+                    </div>
+                </div>
+                
+                <div class="mt-6 grid grid-cols-2 gap-3">
+                    <!-- OAuth buttons: changed to safe fallback handlers to avoid malformed OAuth redirects -->
+                    <a href="#" data-provider="google" class="oauth-btn flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo" class="h-5 w-5 mr-2">
+                        Google
+                    </a>
+
+                    <a href="#" data-provider="facebook" class="oauth-btn flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/facebook.svg" alt="Facebook logo" class="h-5 w-5 mr-2">
+                        Facebook
+                    </a>
+                </div>
+                </div>
+            </div>
+            
+            <div class="mt-6 text-center">
+                <p id="no-account" class="text-sm text-gray-600">
+                    Don't have an account? 
+                    <a href="signup.html" id="signup-link" class="text-green-600 hover:text-green-800 font-medium">Sign up</a>
+                </p>
+            </div>
+        </div>
+    </main>
+    
+    <custom-footer></custom-footer>
+    
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+        
+        // Login functionality
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple validation
+            if (!email || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Simulate login process
+            const userData = {
+                email: email,
+                name: email.split('@')[0],
+                loginTime: new Date().toISOString()
+            };
+            
+            // Store user data in localStorage
+            localStorage.setItem('user', JSON.stringify(userData));
+            localStorage.setItem('isLoggedIn', 'true');
+            
+            // Redirect to profile creation if first time
+            const hasProfile = localStorage.getItem('hasProfile');
+            if (!hasProfile) {
+                window.location.href = 'profile.html';
+            } else {
+                window.location.href = 'index.html';
+            }
+        });
+        
+
+    </script>
+    <script>
+        // OAuth fallback: show instructions instead of navigating to an unconfigured OAuth endpoint
+        function showOAuthNotice(provider) {
+            const title = provider === 'google' ? 'Google Sign-In is not configured' : 'Facebook Sign-In is not configured';
+            const details = provider === 'google'
+                ? 'To enable Google Sign-In: register an OAuth client in Google Cloud Console, set the Client ID and allowed redirect URIs, and implement the server-side token exchange or use Google Identity Services.'
+                : 'To enable Facebook Sign-In: register an app in Facebook Developers, set the App ID and redirect URI, and implement the server-side OAuth exchange or use Facebook SDK.';
+            // Simple modal-like alert (keeps UX consistent without external libs)
+            const msg = `${title}\n\n${details}\n\nIf you want, you can disable these buttons or provide valid client IDs in the HTML.`;
+            // Use a nicer browser modal to avoid 400 errors
+            alert(msg);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.oauth-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const provider = btn.getAttribute('data-provider');
+                    showOAuthNotice(provider);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

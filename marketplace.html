@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seed Marketplace | KhetiMitra</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .fade-in {
+          animation: fadeInPage 1.2s cubic-bezier(0.4,0,0.2,1);
+        }
+        @keyframes fadeInPage {
+          from { opacity: 0; transform: translateY(40px); }
+          to { opacity: 1; transform: none; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <custom-navbar></custom-navbar>
+    
+    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <!-- Marketplace Header -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+            <div>
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">Seed Marketplace</h1>
+                <p class="text-gray-600">Buy high-quality seeds from trusted suppliers</p>
+            </div>
+            <a href="cart.html" class="mt-4 md:mt-0 flex items-center bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-200 hover:bg-gray-50">
+                <i data-feather="shopping-cart" class="w-5 h-5 mr-2 text-green-600"></i>
+                <span>View Cart</span>
+            </a>
+        </div>
+        
+        <!-- Filters and Sorting -->
+        <div class="bg-white rounded-lg shadow-md p-4 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                <!-- Category Filter -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                    <select name="category" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        <option value="">All Categories</option>
+                        <option value="Rice">Rice</option>
+                        <option value="Vegetable">Vegetable</option>
+                        <option value="Fruits">Fruits</option>
+                        <option value="Pulse">Pulse</option>
+                        <option value="Oilseed">Oilseed</option>
+                        <option value="Cash Crop">Cash Crop</option>
+                        <option value="Cotton">Cotton</option>
+                        <option value="Wheat">Wheat</option>
+                    </select>
+                </div>
+                
+                <!-- Company Filter -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                    <select name="company" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        <option value="">All Companies</option>
+                        <option value="monsanto">Monsanto</option>
+                        <option value="syngenta">Syngenta</option>
+                        <option value="bayer">Bayer</option>
+                        <option value="nuziveedu">Nuziveedu Seeds</option>
+                        <option value="kaveri">Kaveri Seeds</option>
+                    </select>
+                </div>
+                
+                <!-- Seed Type Filter -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Type</label>
+                    <select name="seed-type" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        <option value="">All Types</option>
+                        <option value="hybrid">Hybrid</option>
+                        <option value="organic">Organic</option>
+                        <option value="traditional">Traditional</option>
+                        <option value="gm">GM</option>
+                    </select>
+                </div>
+                
+                <!-- Sort Options -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Sort by</label>
+                    <select name="sort-by" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        <option value="popular">Popular</option>
+                        <option value="rating">Highest Rating</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="newest">Newest</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Price Range Slider -->
+            <div class="mt-4">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2 gap-2">
+                    <label class="block text-sm font-medium text-gray-700">Price Range</label>
+                    <span id="price-range-value" class="text-sm font-medium text-green-600">₹0 - ₹5,000</span>
+                </div>
+                <div class="flex flex-col sm:flex-row items-center gap-4">
+                    <input type="number" id="min-price" min="0" max="4900" value="0" 
+                           class="w-full sm:w-24 border border-gray-300 rounded-lg px-3 py-1 text-sm focus:ring-green-500 focus:border-green-500">
+                    <div class="flex-grow relative w-full">
+                        <input type="range" id="price-range" min="0" max="5000" value="5000" step="100" 
+                               class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                        <div class="absolute top-0 left-0 right-0 h-2 bg-green-500 rounded-lg pointer-events-none" 
+                             style="width: 100%" id="price-progress"></div>
+                    </div>
+                    <input type="number" id="max-price" min="100" max="5000" value="5000" 
+                           class="w-full sm:w-24 border border-gray-300 rounded-lg px-3 py-1 text-sm focus:ring-green-500 focus:border-green-500">
+                </div>
+            </div>
+</div>
+<!-- Products Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 products-grid">
+            <!-- Product Card 1 -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 product-card" data-category="Rice" data-price="850" data-rating="4" data-popularity="142" data-company="nuziveedu" data-seed-type="traditional">
+                <div class="relative">
+                <div class="relative">
+                    <img src="http://static.photos/agriculture/640x360/9" alt="Rice field" class="w-full h-48 object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-sm">
+                        <div class="flex items-center justify-center gap-2">
+                            <img src="http://static.photos/agriculture/100x100/1" alt="Pusa Basmati 1121 seeds" 
+                                 class="w-8 h-8 object-cover rounded-full border border-white">
+                            <span>Seed Sample</span>
+                        </div>
+                    </div>
+                </div>
+<div class="absolute top-2 left-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full font-medium">
+                        -15%
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold text-gray-900">Pusa Basmati 1121</h3>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-medium">Rice</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">Premium aromatic basmati rice variety with extra long grains.</p>
+                    
+                    <div class="flex items-center mb-3">
+                        <div class="flex">
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-gray-300 fill-gray-300"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(142)</span>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-lg font-bold text-gray-900 product-price">₹850</span>
+                            <span class="text-sm text-gray-500 line-through ml-1">₹1,000</span>
+                        </div>
+                        <button class="add-to-cart bg-green-600 hover:bg-green-700 text-white p-2 rounded-full transition"
+                                data-id="1"
+                                data-name="Pusa Basmati 1121"
+                                data-price="850" 
+                                data-category="Rice"
+                                data-image="http://static.photos/agriculture/640x360/9">
+                            <i data-feather="shopping-cart" class="w-4 h-4"></i>
+                        </button>
+</div>
+                </div>
+            </div>
+            
+            <!-- Product Card 2 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 product-card" data-category="Vegetable" data-price="1200" data-rating="5" data-popularity="89" data-company="syngenta" data-seed-type="hybrid">
+                <div class="relative">
+                <div class="relative">
+                    <img src="http://static.photos/agriculture/640x360/10" alt="Tomato plants" class="w-full h-48 object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-sm">
+                        <div class="flex items-center justify-center gap-2">
+                            <img src="http://static.photos/agriculture/100x100/2" alt="Arka Rakshak Tomato seeds" 
+                                 class="w-8 h-8 object-cover rounded-full border border-white">
+                            <span>Seed Sample</span>
+                        </div>
+                    </div>
+                </div>
+</div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold text-gray-900">Arka Rakshak Tomato</h3>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-medium">Vegetable</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">Disease-resistant hybrid with high yield potential.</p>
+                    
+                    <div class="flex items-center mb-3">
+                        <div class="flex">
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(89)</span>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-lg font-bold text-gray-900 product-price">₹1,200</span>
+                            <span class="text-sm text-gray-400 ml-1">per 100g</span>
+                        </div>
+                        <button class="add-to-cart bg-green-600 hover:bg-green-700 text-white p-2 rounded-full transition"
+                                data-id="2"
+                                data-name="Arka Rakshak Tomato"
+                                data-price="1200"
+                                data-category="Vegetable"
+                                data-image="http://static.photos/agriculture/640x360/10">
+                            <i data-feather="shopping-cart" class="w-4 h-4"></i>
+                        </button>
+</div>
+                </div>
+            </div>
+            
+            <!-- Product Card 3 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 product-card" data-category="Cotton" data-price="4500" data-rating="4" data-popularity="56" data-company="bayer" data-seed-type="gm">
+                <div class="relative">
+                <div class="relative">
+                    <img src="http://static.photos/agriculture/640x360/11" alt="Cotton field" class="w-full h-48 object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-sm">
+                        <div class="flex items-center justify-center gap-2">
+                            <img src="http://static.photos/agriculture/100x100/3" alt="BG II Cotton seeds" 
+                                 class="w-8 h-8 object-cover rounded-full border border-white">
+                            <span>Seed Sample</span>
+                        </div>
+                    </div>
+                </div>
+<div class="absolute top-2 left-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full font-medium">
+                        New
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold text-gray-900">BG II Cotton</h3>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-medium">Cotton</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">BT cotton variety resistant to bollworm pests.</p>
+                    
+                    <div class="flex items-center mb-3">
+                        <div class="flex">
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-gray-300 fill-gray-300"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(56)</span>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-lg font-bold text-gray-900 product-price">₹4,500</span>
+                            <span class="text-sm text-gray-400 ml-1">per kg</span>
+                        </div>
+                        <button class="add-to-cart bg-green-600 hover:bg-green-700 text-white p-2 rounded-full transition"
+                                data-id="3"
+                                data-name="BG II Cotton"
+                                data-price="4500"
+                                data-category="Cotton" 
+                                data-image="http://static.photos/agriculture/640x360/11">
+                            <i data-feather="shopping-cart" class="w-4 h-4"></i>
+                        </button>
+</div>
+                </div>
+            </div>
+            
+            <!-- Product Card 4 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 product-card" data-category="Wheat" data-price="1150" data-rating="5" data-popularity="210" data-company="kaveri" data-seed-type="traditional">
+                <div class="relative">
+                <div class="relative">
+                    <img src="http://static.photos/agriculture/640x360/12" alt="Wheat field" class="w-full h-48 object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-sm">
+                        <div class="flex items-center justify-center gap-2">
+                            <img src="http://static.photos/agriculture/100x100/4" alt="HD 2967 Wheat seeds" 
+                                 class="w-8 h-8 object-cover rounded-full border border-white">
+                            <span>Seed Sample</span>
+                        </div>
+                    </div>
+                </div>
+</div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold text-gray-900">HD 2967 Wheat</h3>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-medium">Wheat</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">High-yielding variety suited for North-West Plains.</p>
+                    
+                    <div class="flex items-center mb-3">
+                        <div class="flex">
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(210)</span>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-lg font-bold text-gray-900 product-price">₹1,150</span>
+                            <span class="text-sm text-gray-400 ml-1">per kg</span>
+                        </div>
+                        <button class="add-to-cart bg-green-600 hover:bg-green-700 text-white p-2 rounded-full transition"
+                                data-id="4"
+                                data-name="HD 2967 Wheat"
+                                data-price="1150"
+                                data-category="Wheat"
+                                data-image="http://static.photos/agriculture/640x360/12">
+                            <i data-feather="shopping-cart" class="w-4 h-4"></i>
+                        </button>
+</div>
+                </div>
+            </div>
+            
+            <!-- Product Card 5 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 product-card" data-category="Pulse" data-price="2800" data-rating="3" data-popularity="34" data-company="monsanto" data-seed-type="organic">
+                <div class="relative">
+                <div class="relative">
+                    <img src="http://static.photos/agriculture/640x360/13" alt="Soybean field" class="w-full h-48 object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-sm">
+                        <div class="flex items-center justify-center gap-2">
+                            <img src="http://static.photos/agriculture/100x100/5" alt="JS 9560 Soybean seeds" 
+                                 class="w-8 h-8 object-cover rounded-full border border-white">
+                            <span>Seed Sample</span>
+                        </div>
+                    </div>
+                </div>
+<div class="absolute top-2 left-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full font-medium">
+                        Organic
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold text-gray-900">JS 9560 Soybean</h3>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-medium">Pulse</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">High protein content and good oil percentage.</p>
+                    
+                    <div class="flex items-center mb-3">
+                        <div class="flex">
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-gray-300 fill-gray-300"></i>
+                            <i data-feather="star" class="w-4 h-4 text-gray-300 fill-gray-300"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(34)</span>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-lg font-bold text-gray-900 product-price">₹2,800</span>
+                            <span class="text-sm text-gray-400 ml-1">per kg</span>
+                        </div>
+                        <button class="add-to-cart bg-green-600 hover:bg-green-700 text-white p-2 rounded-full transition"
+                                data-id="5"
+                                data-name="JS 9560 Soybean"
+                                data-price="2800"
+                                data-category="Pulse"
+                                data-image="http://static.photos/agriculture/640x360/13">
+                            <i data-feather="shopping-cart" class="w-4 h-4"></i>
+                        </button>
+</div>
+                </div>
+            </div>
+            
+            <!-- Product Card 6 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 product-card" data-category="Vegetable" data-price="3200" data-rating="5" data-popularity="178" data-company="nuziveedu" data-seed-type="hybrid">
+                <div class="relative">
+                <div class="relative">
+                    <img src="http://static.photos/agriculture/640x360/14" alt="Potato field" class="w-full h-48 object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-sm">
+                        <div class="flex items-center justify-center gap-2">
+                            <img src="http://static.photos/agriculture/100x100/6" alt="Kufri Jyoti Potato seeds" 
+                                 class="w-8 h-8 object-cover rounded-full border border-white">
+                            <span>Seed Sample</span>
+                        </div>
+                    </div>
+                </div>
+</div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold text-gray-900">Kufri Jyoti Potato</h3>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-medium">Vegetable</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">High yielding variety with good processing quality.</p>
+                    
+                    <div class="flex items-center mb-3">
+                        <div class="flex">
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(178)</span>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-lg font-bold text-gray-900 product-price">₹3,200</span>
+                            <span class="text-sm text-gray-400 ml-1">per 25kg</span>
+                        </div>
+                        <button class="add-to-cart bg-green-600 hover:bg-green-700 text-white p-2 rounded-full transition"
+                                data-id="6"
+                                data-name="Kufri Jyoti Potato"
+                                data-price="3200"
+                                data-category="Vegetable"
+                                data-image="http://static.photos/agriculture/640x360/14">
+                            <i data-feather="shopping-cart" class="w-4 h-4"></i>
+                        </button>
+</div>
+                </div>
+            </div>
+            
+            <!-- Product Card 7 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 product-card" data-category="Oilseed" data-price="1800" data-rating="3" data-popularity="42" data-company="kaveri" data-seed-type="traditional">
+                <div class="relative">
+                <div class="relative">
+                    <img src="http://static.photos/agriculture/640x360/15" alt="Mustard field" class="w-full h-48 object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-sm">
+                        <div class="flex items-center justify-center gap-2">
+                            <img src="http://static.photos/agriculture/100x100/7" alt="RH 749 Mustard seeds" 
+                                 class="w-8 h-8 object-cover rounded-full border border-white">
+                            <span>Seed Sample</span>
+                        </div>
+                    </div>
+                </div>
+<div class="absolute top-2 left-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full font-medium">
+                        -10%
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold text-gray-900">RH 749 Mustard</h3>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-medium">Oilseed</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">High oil content variety with early maturity.</p>
+                    
+                    <div class="flex items-center mb-3">
+                        <div class="flex">
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-gray-300 fill-gray-300"></i>
+                            <i data-feather="star" class="w-4 h-4 text-gray-300 fill-gray-300"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(42)</span>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-lg font-bold text-gray-900 product-price">₹1,800</span>
+                            <span class="text-sm text-gray-500 line-through ml-1">₹2,000</span>
+                        </div>
+                        <button class="add-to-cart bg-green-600 hover:bg-green-700 text-white p-2 rounded-full transition"
+                                data-id="7"
+                                data-name="RH 749 Mustard"
+                                data-price="1800"
+                                data-category="Oilseed"
+                                data-image="http://static.photos/agriculture/640x360/15">
+                            <i data-feather="shopping-cart" class="w-4 h-4"></i>
+                        </button>
+</div>
+                </div>
+            </div>
+            
+            <!-- Product Card 8 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300 product-card" data-category="Cash Crop" data-price="1500" data-rating="5" data-popularity="97" data-company="bayer" data-seed-type="traditional">
+                <div class="relative">
+                <div class="relative">
+                    <img src="http://static.photos/agriculture/640x360/16" alt="Sugarcane field" class="w-full h-48 object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-sm">
+                        <div class="flex items-center justify-center gap-2">
+                            <img src="http://static.photos/agriculture/100x100/8" alt="Co 0238 Sugarcane stems" 
+                                 class="w-8 h-8 object-cover rounded-full border border-white">
+                            <span>Seed Sample</span>
+                        </div>
+                    </div>
+                </div>
+</div>
+                <div class="p-5">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-lg font-bold text-gray-900">Co 0238 Sugarcane</h3>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-medium">Cash Crop</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">Early maturing variety with high sugar recovery.</p>
+                    
+                    <div class="flex items-center mb-3">
+                        <div class="flex">
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                            <i data-feather="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
+                        </div>
+                        <span class="text-xs text-gray-500 ml-1">(97)</span>
+                    </div>
+                    
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <span class="text-lg font-bold text-gray-900 product-price">₹1,500</span>
+                            <span class="text-sm text-gray-400 ml-1">per 100 stems</span>
+                        </div>
+                        <button class="add-to-cart bg-green-600 hover:bg-green-700 text-white p-2 rounded-full transition"
+                                data-id="8"
+                                data-name="Co 0238 Sugarcane"
+                                data-price="1500"
+                                data-category="Cash Crop"
+                                data-image="http://static.photos/agriculture/640x360/16">
+                            <i data-feather="shopping-cart" class="w-4 h-4"></i>
+                        </button>
+</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="mt-8 flex justify-center">
+            <nav class="inline-flex rounded-md shadow">
+                <button id="prev-page" class="px-3 py-1 rounded-l-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <i data-feather="chevron-left" class="w-5 h-5"></i>
+                </button>
+                <button class="page-btn px-4 py-1 border-t border-b border-gray-300 bg-white text-green-600 font-medium hover:bg-gray-50" data-page="1">1</button>
+                <button class="page-btn px-4 py-1 border-t border-b border-gray-300 bg-white text-gray-500 hover:bg-gray-50" data-page="2">2</button>
+                <button class="page-btn px-4 py-1 border-t border-b border-gray-300 bg-white text-gray-500 hover:bg-gray-50" data-page="3">3</button>
+                <button id="next-page" class="px-3 py-1 rounded-r-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <i data-feather="chevron-right" class="w-5 h-5"></i>
+                </button>
+            </nav>
+        </div>
+        <!-- Trusted Suppliers Section -->
+        <div class="mt-12 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-bold text-gray-900 mb-6">Trusted Seed Suppliers in India</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Supplier 1 -->
+                <a href="#bayer-products" class="supplier-card group">
+                    <div class="bg-gray-50 p-4 rounded-lg flex flex-col items-center border border-gray-200 hover:border-green-500 transition">
+                        <img src="http://static.photos/office/200x200/1" alt="Bayer Logo" class="h-16 object-contain mb-3">
+                        <h3 class="font-medium text-gray-900 text-center group-hover:text-green-600">Bayer CropScience</h3>
+                        <p class="text-xs text-gray-500 mt-1">Hybrid Seeds</p>
+                    </div>
+                </a>
+                
+                <!-- Supplier 2 -->
+                <a href="#syngenta-products" class="supplier-card group">
+                    <div class="bg-gray-50 p-4 rounded-lg flex flex-col items-center border border-gray-200 hover:border-green-500 transition">
+                        <img src="http://static.photos/office/200x200/2" alt="Syngenta Logo" class="h-16 object-contain mb-3">
+                        <h3 class="font-medium text-gray-900 text-center group-hover:text-green-600">Syngenta India</h3>
+                        <p class="text-xs text-gray-500 mt-1">Vegetable Seeds</p>
+                    </div>
+                </a>
+                
+                <!-- Supplier 3 -->
+                <a href="#mahyco-products" class="supplier-card group">
+                    <div class="bg-gray-50 p-4 rounded-lg flex flex-col items-center border border-gray-200 hover:border-green-500 transition">
+                        <img src="http://static.photos/office/200x200/3" alt="Mahyco Logo" class="h-16 object-contain mb-3">
+                        <h3 class="font-medium text-gray-900 text-center group-hover:text-green-600">Mahyco Seeds</h3>
+                        <p class="text-xs text-gray-500 mt-1">GM Crops</p>
+                    </div>
+                </a>
+                
+                <!-- Supplier 4 -->
+                <a href="#nuziveedu-products" class="supplier-card group">
+                    <div class="bg-gray-50 p-4 rounded-lg flex flex-col items-center border border-gray-200 hover:border-green-500 transition">
+                        <img src="http://static.photos/office/200x200/4" alt="Nuziveedu Logo" class="h-16 object-contain mb-3">
+                        <h3 class="font-medium text-gray-900 text-center group-hover:text-green-600">Nuziveedu Seeds</h3>
+                        <p class="text-xs text-gray-500 mt-1">Cotton & Cereals</p>
+                    </div>
+                </a>
+                
+                <!-- Supplier 5 -->
+                <a href="#kaveri-products" class="supplier-card group">
+                    <div class="bg-gray-50 p-4 rounded-lg flex flex-col items-center border border-gray-200 hover:border-green-500 transition">
+                        <img src="http://static.photos/office/200x200/5" alt="Kaveri Logo" class="h-16 object-contain mb-3">
+                        <h3 class="font-medium text-gray-900 text-center group-hover:text-green-600">Kaveri Seeds</h3>
+                        <p class="text-xs text-gray-500 mt-1">Hybrid Seeds</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+</div>
+    </main>
+    
+    <custom-footer></custom-footer>
+    
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          document.body.classList.add('fade-in');
+        });
+        
+        feather.replace();
+        
+        // Pagination functionality
+        let currentPage = 1;
+        const productsPerPage = 8;
+        const allProducts = document.querySelectorAll('.bg-white.rounded-xl.overflow-hidden.shadow-md');
+        
+        function showPage(page) {
+            const startIndex = (page - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            
+            allProducts.forEach((product, index) => {
+                if (index >= startIndex && index < endIndex) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+            
+            // Update pagination buttons
+            document.querySelectorAll('.page-btn').forEach(btn => {
+                btn.classList.remove('text-green-600', 'font-medium');
+                btn.classList.add('text-gray-500');
+            });
+            
+            const activeBtn = document.querySelector(`[data-page="${page}"]`);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-gray-500');
+                activeBtn.classList.add('text-green-600', 'font-medium');
+            }
+            
+            // Update prev/next buttons
+            document.getElementById('prev-page').disabled = page === 1;
+            document.getElementById('next-page').disabled = page === 3;
+            
+            currentPage = page;
+        }
+        
+        // Initialize pagination
+        showPage(1);
+        
+        // Add event listeners for pagination
+        document.querySelectorAll('.page-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const page = parseInt(btn.getAttribute('data-page'));
+                showPage(page);
+            });
+        });
+        
+        document.getElementById('prev-page').addEventListener('click', () => {
+            if (currentPage > 1) showPage(currentPage - 1);
+        });
+        
+        document.getElementById('next-page').addEventListener('click', () => {
+            if (currentPage < 3) showPage(currentPage + 1);
+        });
+        
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const product = {
+                    id: this.getAttribute('data-id'),
+                    name: this.getAttribute('data-name'),
+                    price: parseInt(this.getAttribute('data-price')),
+                    category: this.getAttribute('data-category'),
+                    image: this.getAttribute('data-image'),
+                    quantity: 1
+                };
+                
+                // Get user profile for shipping information
+                const userData = JSON.parse(localStorage.getItem('user') || '{}');
+                if (userData.profileCompleted) {
+                    product.shippingInfo = {
+                        farmName: userData.farmName,
+                        address: userData.address,
+                        state: userData.state,
+                        district: userData.district,
+                        pincode: userData.pincode,
+                        phone: userData.phone
+                    };
+                }
+                
+                // Get existing cart or initialize empty array
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                
+                // Check if product already in cart
+                const existingItem = cart.find(item => item.id === product.id);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push(product);
+                }
+                
+                // Save updated cart to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+                
+                // Update cart count in navbar
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                document.querySelectorAll('.cart-count').forEach(el => {
+                    el.textContent = totalItems;
+                    el.classList.toggle('hidden', totalItems === 0);
+                });
+                
+                // Show success message
+                alert(`${product.name} added to cart!`);
+            });
+        });
+    </script>
+</body>
+</html>

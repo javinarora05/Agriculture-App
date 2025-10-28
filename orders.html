@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Orders | KhetiMitra</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-gray-50">
+  <custom-navbar></custom-navbar>
+
+  <main class="max-w-6xl mx-auto px-4 py-10">
+  <h1 id="page-title" class="text-2xl font-bold mb-4">My Orders</h1>
+  <p id="page-subtitle" class="text-sm text-gray-600 mb-6">Here you'll find the orders you've placed through the marketplace.</p>
+
+    <div id="orders-container">
+      <div id="orders-list" class="space-y-4">
+        <!-- Orders will be injected here -->
+      </div>
+    </div>
+  </main>
+
+  <custom-footer></custom-footer>
+
+  <script src="components/navbar.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      feather.replace();
+      const orders = getFromLocalStorage('orders') || [];
+      const list = document.getElementById('orders-list');
+
+      document.body.classList.add('fade-in');
+
+      if (!orders.length) {
+        list.innerHTML = `
+          <div class="bg-white rounded-lg shadow p-8 text-center">
+            <i data-feather="box" class="w-8 h-8 mx-auto text-gray-400"></i>
+            <h3 class="mt-4 text-lg font-medium text-gray-900">No orders yet</h3>
+            <p class="mt-1 text-gray-500">Place your first order from the <a href="marketplace.html" class="text-green-600">marketplace</a>.</p>
+          </div>
+        `;
+        return;
+      }
+
+      // Render each order (most recent first)
+      orders.slice().reverse().forEach(order => {
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-lg shadow p-4';
+
+        const header = document.createElement('div');
+        header.className = 'flex items-center justify-between';
+        header.innerHTML = `
+          <div>
+            <div class="text-sm text-gray-500">Order ID</div>
+            <div class="font-medium text-gray-900">${order.id}</div>
+            <div class="text-xs text-gray-500">${new Date(order.date).toLocaleString()}</div>
+          </div>
+          <div class="text-right">
+            <div class="text-sm text-gray-500">Status</div>
+            <div class="font-medium text-green-600">${order.status || 'Placed'}</div>
+            <div class="text-sm text-gray-900 mt-2">₹${(order.total || 0).toLocaleString()}</div>
+          </div>
+        `;
+
+        const detailsToggle = document.createElement('button');
+        detailsToggle.className = 'mt-3 text-sm text-green-600 hover:underline';
+        detailsToggle.textContent = 'View details';
+
+        const details = document.createElement('div');
+        details.className = 'mt-3 border-t pt-3 hidden';
+
+        // items table
+        const itemsList = document.createElement('div');
+        itemsList.className = 'space-y-2';
+        (order.items || []).forEach(it => {
+          const row = document.createElement('div');
+          row.className = 'flex justify-between items-center';
+          row.innerHTML = `
+            <div class="text-sm">
+              <div class="font-medium">${it.name}</div>
+              <div class="text-xs text-gray-500">${it.category || ''}</div>
+            </div>
+            <div class="text-sm text-gray-700">${it.quantity} × ₹${it.price.toLocaleString()}</div>
+          `;
+          itemsList.appendChild(row);
+        });
+
+        const totals = document.createElement('div');
+        totals.className = 'mt-3 border-t pt-3 text-sm text-gray-700';
+        totals.innerHTML = `
+          <div class="flex justify-between"><div>Subtotal</div><div>₹${(order.subtotal || 0).toLocaleString()}</div></div>
+          <div class="flex justify-between"><div>Shipping</div><div>${order.shipping === 0 ? 'FREE' : '₹' + (order.shipping || 0).toLocaleString()}</div></div>
+          <div class="flex justify-between font-medium mt-2"><div>Total</div><div>₹${(order.total || 0).toLocaleString()}</div></div>
+        `;
+
+        details.appendChild(itemsList);
+        details.appendChild(totals);
+
+        detailsToggle.addEventListener('click', () => {
+          details.classList.toggle('hidden');
+          detailsToggle.textContent = details.classList.contains('hidden') ? 'View details' : 'Hide details';
+        });
+
+        card.appendChild(header);
+        card.appendChild(detailsToggle);
+        card.appendChild(details);
+
+        list.appendChild(card);
+      });
+    });
+  </script>
+</body>
+</html>

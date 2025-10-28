@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Prevention | KhetiMitra</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .fade-in {
+          animation: fadeInPage 1.2s cubic-bezier(0.4,0,0.2,1);
+        }
+        @keyframes fadeInPage {
+          from { opacity: 0; transform: translateY(40px); }
+          to { opacity: 1; transform: none; }
+        }
+        .infinite-bounce {
+          display: inline-block;
+          animation: bounce 1.2s infinite alternate cubic-bezier(0.4,0,0.2,1);
+        }
+        @keyframes bounce {
+          from { transform: translateY(0); }
+          to { transform: translateY(-16px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <custom-navbar></custom-navbar>
+    
+    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 fade-in">
+        <!-- Alert Banner -->
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-8">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <i data-feather="alert-triangle" class="h-5 w-5 text-red-500 infinite-bounce"></i>
+                </div>
+                <div class="ml-3">
+                    <h3 class="text-sm font-medium text-red-800">Weather Alert: Heavy rainfall expected in your region (Punjab) in next 72 hours</h3>
+                    <div class="mt-2 text-sm text-red-700">
+                        <p>Preparedness checklist activated for flood protection measures.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Disaster Prevention & Management</h1>
+            <p class="text-gray-600">Protect your crops from natural disasters with early warnings and protective measures</p>
+        </div>
+        
+        <!-- Disaster Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <!-- Flood Card -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+                <img src="http://static.photos/nature/640x360/1" alt="Flood" class="w-full h-40 object-cover">
+                <div class="p-5">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-blue-100 p-2 rounded-full mr-3">
+                            <i data-feather="droplet" class="w-5 h-5 text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Flood Protection</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Measures to protect crops from excessive rainfall and waterlogging.</p>
+                    <a href="#flood" class="text-green-600 font-medium flex items-center">
+                        Learn more <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Drought Card -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+                <img src="http://static.photos/nature/640x360/2" alt="Drought" class="w-full h-40 object-cover">
+                <div class="p-5">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-yellow-100 p-2 rounded-full mr-3">
+                            <i data-feather="sun" class="w-5 h-5 text-yellow-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Drought Management</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Strategies for water conservation and drought-resistant crops.</p>
+                    <a href="#drought" class="text-green-600 font-medium flex items-center">
+                        Learn more <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Pest Card -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+                <img src="http://static.photos/nature/640x360/3" alt="Pest" class="w-full h-40 object-cover">
+                <div class="p-5">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-red-100 p-2 rounded-full mr-3">
+                            <i data-feather="bug" class="w-5 h-5 text-red-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Pest Outbreaks</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Early detection and organic/chemical control methods.</p>
+                    <a href="#pest" class="text-green-600 font-medium flex items-center">
+                        Learn more <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Disease Card -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+                <img src="http://static.photos/nature/640x360/4" alt="Disease" class="w-full h-40 object-cover">
+                <div class="p-5">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-purple-100 p-2 rounded-full mr-3">
+                            <i data-feather="activity" class="w-5 h-5 text-purple-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Disease Control</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Identifying and treating common crop diseases.</p>
+                    <a href="#disease" class="text-green-600 font-medium flex items-center">
+                        Learn more <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Hailstorm Card -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+                <img src="http://static.photos/nature/640x360/5" alt="Hailstorm" class="w-full h-40 object-cover">
+                <div class="p-5">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-gray-100 p-2 rounded-full mr-3">
+                            <i data-feather="cloud" class="w-5 h-5 text-gray-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Hailstorm Protection</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Shielding crops from hail damage with protective covers.</p>
+                    <a href="#hailstorm" class="text-green-600 font-medium flex items-center">
+                        Learn more <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Heat Wave Card -->
+            <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+                <img src="http://static.photos/nature/640x360/6" alt="Heat Wave" class="w-full h-40 object-cover">
+                <div class="p-5">
+                    <div class="flex items-center mb-3">
+                        <div class="bg-orange-100 p-2 rounded-full mr-3">
+                            <i data-feather="thermometer" class="w-5 h-5 text-orange-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">Heat Wave</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Protecting crops during extreme heat conditions.</p>
+                    <a href="#heat-wave" class="text-green-600 font-medium flex items-center">
+                        Learn more <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Flood Section -->
+        <div id="flood" class="bg-white rounded-xl shadow-md p-6 mb-8">
+            <div class="flex items-center mb-4">
+                <div class="bg-blue-100 p-2 rounded-full mr-3">
+                    <i data-feather="droplet" class="w-5 h-5 text-blue-600"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">Flood Protection</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Warning Signs</h3>
+                    <ul class="list-disc pl-5 mb-4 space-y-1 text-gray-700">
+                        <li>Heavy rainfall forecast for multiple days</li>
+                        <li>River water levels rising beyond normal</li>
+                        <li>Waterlogging in low-lying areas of fields</li>
+                        <li>Slow drainage of water from fields</li>
+                    </ul>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Pre-Flood Preparation</h3>
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i data-feather="check-circle" class="h-5 w-5 text-blue-600"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-sm font-medium text-blue-800">Completed (2/5)</h4>
+                                <div class="mt-2 text-sm text-blue-700">
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center">
+                                            <input type="checkbox" checked class="rounded text-blue-600 focus:ring-blue-500 mr-2">
+                                            <span>Clear drainage channels around fields</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input type="checkbox" checked class="rounded text-blue-600 focus:ring-blue-500 mr-2">
+                                            <span>Identify high ground for equipment storage</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input type="checkbox" class="rounded text-blue-600 focus:ring-blue-500 mr-2">
+                                            <span>Harvest mature crops if possible</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input type="checkbox" class="rounded text-blue-600 focus:ring-blue-500 mr-2">
+                                            <span>Stock sandbags for emergency barriers</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input type="checkbox" class="rounded text-blue-600 focus:ring-blue-500 mr-2">
+                                            <span>Move livestock to higher ground</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">During Flood</h3>
+                    <ol class="list-decimal pl-5 mb-4 space-y-2 text-gray-700">
+                        <li>Assess crop damage - some crops may recover if flood duration was short</li>
+                        <li>Clean debris from fields</li>
+                        <li>Test soil for contamination before replanting</li>
+                        <li>Apply gypsum to help remove salt deposits</li>
+                        <li>Reseed or transplant as soon as possible</li>
+                    </ol>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Insurance Claim Process</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i data-feather="file-text" class="h-5 w-5 text-gray-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-gray-700">Document damage with photos/videos showing extent and date</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i data-feather="phone" class="h-5 w-5 text-gray-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-gray-700">Notify insurance company within 72 hours of damage</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i data-feather="clipboard" class="h-5 w-5 text-gray-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-gray-700">Complete claim form with details of crops affected</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i data-feather="dollar-sign" class="h-5 w-5 text-gray-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-gray-700">Compensation typically paid within 30 days of claim approval</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Crop-Specific Advice</h3>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">Rice</h4>
+                        <p class="text-sm text-gray-600">Rice can survive 3-4 days of complete submersion if water is moving. Drain fields as soon as possible.</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">Wheat</h4>
+                        <p class="text-sm text-gray-600">Wheat is very sensitive to waterlogging. Even 2-3 days can cause significant yield loss.</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">Cotton</h4>
+                        <p class="text-sm text-gray-600">Cotton plants may survive if water recedes within 48 hours. Watch for root rot diseases afterward.</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">Vegetables</h4>
+                        <p class="text-sm text-gray-600">Most vegetables cannot survive flooding. Replant short-duration varieties after water recedes.</p>
+                    </div>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mt-6 mb-2">Emergency Contacts</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <i data-feather="phone" class="w-4 h-4 text-gray-500 mr-2"></i>
+                            <span class="text-sm text-gray-700">Disaster Management Helpline: 1078</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="phone" class="w-4 h-4 text-gray-500 mr-2"></i>
+                            <span class="text-sm text-gray-700">Agriculture Dept: 1800-180-1551</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="phone" class="w-4 h-4 text-gray-500 mr-2"></i>
+                            <span class="text-sm text-gray-700">PMFBY Insurance: 1800-11-6163</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                        <h4 class="font-medium text-gray-900 mb-2">Download Resources</h4>
+                        <div class="space-y-2">
+                            <a href="#" class="flex items-center text-sm text-blue-600 hover:text-blue-800">
+                                <i data-feather="download" class="w-4 h-4 mr-2"></i>
+                                Flood Protection Guide (PDF)
+                            </a>
+                            <a href="#" class="flex items-center text-sm text-blue-600 hover:text-blue-800">
+                                <i data-feather="download" class="w-4 h-4 mr-2"></i>
+                                Insurance Claim Form
+                            </a>
+                            <a href="#" class="flex items-center text-sm text-blue-600 hover:text-blue-800">
+                                <i data-feather="download" class="w-4 h-4 mr-2"></i>
+                                Post-Flood Soil Testing Instructions
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Drought Section -->
+        <div id="drought" class="bg-white rounded-xl shadow-md p-6 mb-8">
+            <div class="flex items-center mb-4">
+                <div class="bg-yellow-100 p-2 rounded-full mr-3">
+                    <i data-feather="sun" class="w-5 h-5 text-yellow-600"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">Drought Management</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Warning Signs</h3>
+                    <ul class="list-disc pl-5 mb-4 space-y-1 text-gray-700">
+                        <li>Below-normal or no rainfall for several weeks</li>
+                        <li>Rapid decline in soil moisture and surface water</li>
+                        <li>Drooping or rolling leaves, delayed flowering</li>
+                        <li>Lower water table in wells and boreholes</li>
+                        <li>Reduced growth and patchy crop emergence</li>
+                    </ul>
+
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">When Drought Strikes — Immediate Actions</h3>
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i data-feather="alert-circle" class="h-5 w-5 text-yellow-600"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-sm font-medium text-yellow-800">Emergency Response</h4>
+                                <div class="mt-2 text-sm text-yellow-700">
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center"><input type="checkbox" class="rounded text-yellow-600 focus:ring-yellow-500 mr-2"><span>Prioritize irrigation for young plants and critical growth stages (flowering, grain filling)</span></li>
+                                        <li class="flex items-center"><input type="checkbox" class="rounded text-yellow-600 focus:ring-yellow-500 mr-2"><span>Use deficit or alternate furrow irrigation to stretch water supplies</span></li>
+                                        <li class="flex items-center"><input type="checkbox" class="rounded text-yellow-600 focus:ring-yellow-500 mr-2"><span>Apply mulch to conserve soil moisture and reduce evaporation</span></li>
+                                        <li class="flex items-center"><input type="checkbox" class="rounded text-yellow-600 focus:ring-yellow-500 mr-2"><span>Avoid deep tillage that exposes soil moisture; reduce field operations</span></li>
+                                        <li class="flex items-center"><input type="checkbox" class="rounded text-yellow-600 focus:ring-yellow-500 mr-2"><span>Move livestock to areas with shade and secure water; ration fodder carefully</span></li>
+                                        <li class="flex items-center"><input type="checkbox" class="rounded text-yellow-600 focus:ring-yellow-500 mr-2"><span>Postpone nitrogen fertiliser applications — delay until moisture improves</span></li>
+                                        <li class="flex items-center"><input type="checkbox" class="rounded text-yellow-600 focus:ring-yellow-500 mr-2"><span>Document crop stress and losses (photos, dates) for insurance and relief</span></li>
+                                        <li class="flex items-center"><input type="checkbox" class="rounded text-yellow-600 focus:ring-yellow-500 mr-2"><span>Contact local extension/KVK for targeted advice and emergency support</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Water Conservation Practices</h3>
+                    <ul class="list-disc pl-5 mb-4 space-y-1 text-gray-700">
+                        <li>Install or maintain drip and micro-sprinkler systems for efficient use</li>
+                        <li>Adopt alternate furrow irrigation (water every other furrow) where appropriate</li>
+                        <li>Collect and use rainwater or farm ponds for supplemental irrigation</li>
+                        <li>Use soil conditioners (organic matter) to improve water holding capacity</li>
+                        <li>Practice conservation tillage and residue retention</li>
+                    </ul>
+
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Pre-Drought Preparation</h3>
+                    <ul class="list-disc pl-5 mb-4 space-y-1 text-gray-700">
+                        <li>Prepare on-farm water storage (ponds, tanks) and maintain pumps</li>
+                        <li>Choose drought-tolerant or short-duration varieties for critical plots</li>
+                        <li>Plan crop rotations and stagger planting dates to reduce simultaneous water demand</li>
+                        <li>Maintain irrigation infrastructure and check for leaks</li>
+                        <li>Train labour and family on water-saving irrigation scheduling</li>
+                    </ul>
+
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Post-Drought Recovery</h3>
+                    <ul class="list-disc pl-5 mb-4 space-y-1 text-gray-700">
+                        <li>Assess plant survival and replant short-duration crops where feasible</li>
+                        <li>Apply organic amendments to restore soil structure and moisture retention</li>
+                        <li>Monitor for pest/disease outbreaks following drought stress</li>
+                        <li>Apply for relief/insurance with documented evidence of losses</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Crop-Specific Advice</h3>
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">Cereals (Wheat, Rice, Maize)</h4>
+                        <p class="text-sm text-gray-600">Provide supplemental irrigation during flowering and grain fill, consider early sowing of tolerant varieties. For rice, consider alternate wetting and drying when water-limited.</p>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">Pulses</h4>
+                        <p class="text-sm text-gray-600">Pulses are relatively drought-tolerant; focus on timely sowing and conserving moisture during germination.</p>
+                    </div>
+
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">Fruits and Trees</h4>
+                        <p class="text-sm text-gray-600">Deep, infrequent watering is better than shallow frequent watering; protect roots with mulch and reduce fruit load where necessary.</p>
+                    </div>
+
+                    <h3 class="text-lg font-medium text-gray-900 mt-6 mb-2">Government Support & Schemes</h3>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <p>Check schemes such as PMFBY (Pradhan Mantri Fasal Bima Yojana) for crop insurance and state-level relief programmes. Local agriculture offices and KVKs can advise on available support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pest Outbreaks Section -->
+        <div id="pest" class="bg-white rounded-xl shadow-md p-6 mb-8">
+            <div class="flex items-center mb-4">
+                <div class="bg-red-100 p-2 rounded-full mr-3">
+                    <i data-feather="bug" class="w-5 h-5 text-red-600"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">Pest Outbreaks</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Warning Signs</h3>
+                    <ul class="list-disc pl-5 mb-4 space-y-1 text-gray-700">
+                        <li>Sudden appearance of insects on leaves, stems, or fruits</li>
+                        <li>Holes in leaves or chewed edges</li>
+                        <li>Sticky honeydew on leaves (aphid infestation)</li>
+                        <li>Wilting or yellowing of plants despite adequate water</li>
+                        <li>Presence of ants farming aphids or mealybugs</li>
+                        <li>Webbing on plants (spider mites)</li>
+                    </ul>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Immediate Actions</h3>
+                    <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i data-feather="alert-circle" class="h-5 w-5 text-red-600"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-sm font-medium text-red-800">Emergency Response</h4>
+                                <div class="mt-2 text-sm text-red-700">
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center">
+                                            <input type="checkbox" class="rounded text-red-600 focus:ring-red-500 mr-2">
+                                            <span>Identify the pest species correctly</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input type="checkbox" class="rounded text-red-600 focus:ring-red-500 mr-2">
+                                            <span>Remove heavily infested plant parts</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input type="checkbox" class="rounded text-red-600 focus:ring-red-500 mr-2">
+                                            <span>Apply appropriate organic/chemical treatment</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input type="checkbox" class="rounded text-red-600 focus:ring-red-500 mr-2">
+                                            <span>Monitor neighboring plants for spread</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input type="checkbox" class="rounded text-red-600 focus:ring-red-500 mr-2">
+                                            <span>Document damage for insurance claims</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Prevention Measures</h3>
+                    <ul class="list-disc pl-5 mb-4 space-y-1 text-gray-700">
+                        <li>Practice crop rotation to break pest cycles</li>
+                        <li>Use resistant varieties when available</li>
+                        <li>Maintain proper plant spacing for good air circulation</li>
+                        <li>Remove weeds that harbor pests</li>
+                        <li>Encourage beneficial insects (ladybugs, lacewings)</li>
+                        <li>Use pheromone traps for early detection</li>
+                    </ul>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Treatment Options</h3>
+                    <div class="space-y-3">
+                        <div class="border border-gray-200 rounded-lg p-3">
+                            <h4 class="font-medium text-gray-900 mb-1">Organic Methods</h4>
+                            <p class="text-sm text-gray-700">Neem oil spray (2ml/L water), soap solution, garlic-chili spray, beneficial nematodes</p>
+                        </div>
+                        <div class="border border-gray-200 rounded-lg p-3">
+                            <h4 class="font-medium text-gray-900 mb-1">Chemical Control</h4>
+                            <p class="text-sm text-gray-700">Use only registered pesticides, follow label instructions, maintain safety intervals</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Common Pests by Crop</h3>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">Rice</h4>
+                        <p class="text-sm text-gray-600">Brown planthopper, stem borer, leaf folder - Monitor water levels and avoid excess nitrogen</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">Cotton</h4>
+                        <p class="text-sm text-gray-600">Bollworm, whitefly, aphids - Use BT cotton varieties and proper irrigation</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">Vegetables</h4>
+                        <p class="text-sm text-gray-600">Aphids, caterpillars, mites - Regular monitoring and early intervention crucial</p>
+                    </div>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mt-6 mb-2">Emergency Contacts</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <i data-feather="phone" class="w-4 h-4 text-gray-500 mr-2"></i>
+                            <span class="text-sm text-gray-700">Plant Protection Helpline: 1800-180-1551</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="phone" class="w-4 h-4 text-gray-500 mr-2"></i>
+                            <span class="text-sm text-gray-700">Agriculture Dept: 1800-180-1551</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="phone" class="w-4 h-4 text-gray-500 mr-2"></i>
+                            <span class="text-sm text-gray-700">PMFBY Insurance: 1800-11-6163</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                        <h4 class="font-medium text-gray-900 mb-2">Download Resources</h4>
+                        <div class="space-y-2">
+                            <a href="#" class="flex items-center text-sm text-blue-600 hover:text-blue-800">
+                                <i data-feather="download" class="w-4 h-4 mr-2"></i>
+                                Pest Management Handbook (PDF)
+                            </a>
+                            <a href="#" class="flex items-center text-sm text-blue-600 hover:text-blue-800">
+                                <i data-feather="download" class="w-4 h-4 mr-2"></i>
+                                Insurance Claim Form
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Disease Control Section -->
+        <div id="disease" class="bg-white rounded-xl shadow-md p-6 mb-8">
+            <div class="flex items-center mb-4">
+                <div class="bg-purple-100 p-2 rounded-full mr-3">
+                    <i data-feather="activity" class="w-5 h-5 text-purple-600"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">Disease Control</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Warning Signs</h3>
+                    <ul class="list-disc pl-5 mb-4 space-y-1 text-gray-700">
+                        <li>Spots, lesions, or discoloration on leaves</li>
+                        <li>Wilting despite adequate moisture</li>
+                        <li>Stunted growth or abnormal plant development</li>
+                        <li>Powdery or fuzzy growth on plant surfaces</li>
+                        <li>Root rot with foul smell</li>
+                        <li>Sudden death of plant parts or entire plants</li>
+                    </ul>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Immediate Actions</h3>
+                    <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i data-feather="shield" class="h-5 w-5 text-purple-600"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-sm font-medium text-purple-800">Disease Management</h4>
+                                <div class="mt-2 text-sm text-purple-700">
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center">
+                                            <input type="checkbox" class="rounded text-purple-600 focus:ring-purple-500 mr-2">
+                                            <span>Identify disease symptoms accurately</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input type="checkbox" class="rounded text-purple-600 focus:ring-purple-500 mr-2">
+                                            <span>Remove and destroy infected plant material</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input type="checkbox" class="rounded text-purple-600 focus:ring-purple-500 mr-2">
+                                            <span>Apply appropriate fungicide treatment</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input type="checkbox" class="rounded text-purple-600 focus:ring-purple-500 mr-2">
+                                            <span>Improve air circulation and reduce humidity</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input type="checkbox" class="rounded text-purple-600 focus:ring-purple-500 mr-2">
+                                            <span>Sterilize tools and equipment</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Prevention Strategies</h3>
+                    <ul class="list-disc pl-5 mb-4 space-y-1 text-gray-700">
+                        <li>Use disease-resistant varieties</li>
+                        <li>Practice proper crop rotation</li>
+                        <li>Maintain optimal plant spacing</li>
+                        <li>Avoid overhead watering</li>
+                        <li>Ensure good soil drainage</li>
+                        <li>Regular field sanitation</li>
+                    </ul>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Common Diseases</h3>
+                    <div class="space-y-3">
+                        <div class="border border-gray-200 rounded-lg p-3">
+                            <h4 class="font-medium text-gray-900 mb-1">Fungal Diseases</h4>
+                            <p class="text-sm text-gray-700">Powdery mildew, rust, blight, root rot - Use copper-based fungicides</p>
+                        </div>
+                        <div class="border border-gray-200 rounded-lg p-3">
+                            <h4 class="font-medium text-gray-900 mb-1">Bacterial Diseases</h4>
+                            <p class="text-sm text-gray-700">Bacterial wilt, leaf spot - Remove infected plants, use copper sprays</p>
+                        </div>
+                        <div class="border border-gray-200 rounded-lg p-3">
+                            <h4 class="font-medium text-gray-900 mb-1">Viral Diseases</h4>
+                            <p class="text-sm text-gray-700">Mosaic, yellowing - Control vectors, use virus-free planting material</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Crop-Specific Diseases</h3>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">Rice</h4>
+                        <p class="text-sm text-gray-600">Blast, bacterial blight, sheath blight - Monitor weather conditions</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">Wheat</h4>
+                        <p class="text-sm text-gray-600">Rust, powdery mildew, head blight - Use resistant varieties</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">Tomato</h4>
+                        <p class="text-sm text-gray-600">Early blight, late blight, bacterial wilt - Proper staking and pruning</p>
+                    </div>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mt-6 mb-2">Treatment Guidelines</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <i data-feather="droplet" class="w-4 h-4 text-gray-500 mr-2"></i>
+                            <span class="text-sm text-gray-700">Apply fungicides in early morning</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="shield" class="w-4 h-4 text-gray-500 mr-2"></i>
+                            <span class="text-sm text-gray-700">Follow safety intervals before harvest</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hailstorm Protection Section -->
+        <div id="hailstorm" class="bg-white rounded-xl shadow-md p-6 mb-8">
+            <div class="flex items-center mb-4">
+                <div class="bg-gray-100 p-2 rounded-full mr-3">
+                    <i data-feather="cloud" class="w-5 h-5 text-gray-600"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">Hailstorm Protection</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Warning Signs</h3>
+                    <ul class="list-disc pl-5 mb-4 space-y-1 text-gray-700">
+                        <li>Dark, towering cumulonimbus clouds</li>
+                        <li>Sudden drop in temperature</li>
+                        <li>Strong winds preceding the storm</li>
+                        <li>Weather alerts from IMD</li>
+                        <li>Lightning and thunder activity</li>
+                        <li>Greenish tint in clouds (hail indicator)</li>
+                    </ul>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Protective Measures</h3>
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i data-feather="umbrella" class="h-5 w-5 text-gray-600"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-sm font-medium text-gray-800">Pre-Storm Preparation</h4>
+                                <div class="mt-2 text-sm text-gray-700">
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center">
+                                            <input type="checkbox" class="rounded text-gray-600 focus:ring-gray-500 mr-2">
+                                            <span>Install hail nets or protective covers</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input type="checkbox" class="rounded text-gray-600 focus:ring-gray-500 mr-2">
+                                            <span>Move portable equipment to shelter</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input type="checkbox" class="rounded text-gray-600 focus:ring-gray-500 mr-2">
+                                            <span>Harvest mature crops if possible</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input type="checkbox" class="rounded text-gray-600 focus:ring-gray-500 mr-2">
+                                            <span>Secure loose materials and structures</span>
+                                        </li>
+                                        <li class="flex items-center">
+                                            <input type="checkbox" class="rounded text-gray-600 focus:ring-gray-500 mr-2">
+                                            <span>Monitor weather updates continuously</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">During Hailstorm</h3>
+                    <ul class="list-disc pl-5 mb-4 space-y-1 text-gray-700">
+                        <li>Seek immediate shelter - avoid working in fields</li>
+                        <li>Stay away from metal structures and equipment</li>
+                        <li>Monitor crop damage from safe location</li>
+                        <li>Document damage with photos/videos</li>
+                        <li>Wait for storm to completely pass before inspection</li>
+                    </ul>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Post-Hailstorm Recovery</h3>
+                    <ul class="list-disc pl-5 mb-4 space-y-1 text-gray-700">
+                        <li>Assess crop damage immediately after storm</li>
+                        <li>Remove severely damaged plant parts</li>
+                        <li>Apply fungicide to prevent secondary infections</li>
+                        <li>Provide extra nutrition to help recovery</li>
+                        <li>Consider replanting if damage is extensive</li>
+                        <li>File insurance claims within 72 hours</li>
+                    </ul>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Protection Methods</h3>
+                    <div class="space-y-3">
+                        <div class="border border-gray-200 rounded-lg p-3">
+                            <h4 class="font-medium text-gray-900 mb-1">Hail Nets</h4>
+                            <p class="text-sm text-gray-700">Install overhead nets with 20-30mm mesh size, maintain 2-3m height above crops</p>
+                        </div>
+                        <div class="border border-gray-200 rounded-lg p-3">
+                            <h4 class="font-medium text-gray-900 mb-1">Greenhouse/Polytunnel</h4>
+                            <p class="text-sm text-gray-700">Most effective protection for high-value crops, use UV-stabilized covers</p>
+                        </div>
+                        <div class="border border-gray-200 rounded-lg p-3">
+                            <h4 class="font-medium text-gray-900 mb-1">Crop Insurance</h4>
+                            <p class="text-sm text-gray-700">Essential for financial protection, covers yield loss due to hail damage</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Crop Vulnerability</h3>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">High Risk</h4>
+                        <p class="text-sm text-gray-600">Tomatoes, grapes, apples, mangoes - Require immediate protection</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">Medium Risk</h4>
+                        <p class="text-sm text-gray-600">Cotton, sugarcane, maize - Monitor weather alerts closely</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">Lower Risk</h4>
+                        <p class="text-sm text-gray-600">Rice, wheat, groundnut - Less susceptible to hail damage</p>
+                    </div>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mt-6 mb-2">Emergency Contacts</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <i data-feather="phone" class="w-4 h-4 text-gray-500 mr-2"></i>
+                            <span class="text-sm text-gray-700">Weather Helpline: 1800-180-1551</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="phone" class="w-4 h-4 text-gray-500 mr-2"></i>
+                            <span class="text-sm text-gray-700">PMFBY Insurance: 1800-11-6163</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Heat Wave Section -->
+        <div id="heat-wave" class="bg-white rounded-xl shadow-md p-6 mb-8">
+            <div class="flex items-center mb-4">
+                <div class="bg-orange-100 p-2 rounded-full mr-3">
+                    <i data-feather="thermometer" class="w-5 h-5 text-orange-600"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">Heat Wave Protection</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Warning Signs</h3>
+                    <ul class="list-disc pl-5 mb-4 space-y-1 text-gray-700">
+                        <li>Temperature above 40°C for 3+ consecutive days</li>
+                        <li>Low humidity levels (below 30%)</li>
+                        <li>Strong, hot winds</li>
+                        <li>Weather department heat wave alerts</li>
+                        <li>Plant wilting despite adequate soil moisture</li>
+                        <li>Sunburn on fruits and leaves</li>
+                    </ul>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Protective Measures</h3>
+                    <div class="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i data-feather="sun" class="h-5 w-5 text-orange-600"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-sm font-medium text-orange-800">Heat Management — Practical Measures</h4>
+                                <div class="mt-2 text-sm text-orange-700">
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2 mt-1"><span><strong>Irrigation:</strong> use short, more frequent waterings (cycles) to keep the root zone cool — prioritise flowering and grain-filling stages.</span></li>
+                                        <li class="flex items-start"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2 mt-1"><span><strong>Mulch:</strong> apply organic (straw, crop residue) or plastic mulch to reduce evaporation and soil temperature; maintain 3–5 cm cover around plants.</span></li>
+                                        <li class="flex items-start"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2 mt-1"><span><strong>Shade:</strong> install shade nets (30–50% for vegetables; 50% for nursery beds) or temporary covers during peak heat hours.</span></li>
+                                        <li class="flex items-start"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2 mt-1"><span><strong>Anti-transpirants & Kaolin:</strong> consider kaolin clay sprays (1–3% suspension) or approved antitranspirant products to reduce sunburn — test on a small area first and follow product label.</span></li>
+                                        <li class="flex items-start"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2 mt-1"><span><strong>Evaporative cooling / Misting:</strong> where water availability allows, short-duration misting in the hottest hours can cool canopy temperature for high-value crops; avoid overuse to conserve water.</span></li>
+                                        <li class="flex items-start"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2 mt-1"><span><strong>Reflective mulches:</strong> use reflective films in orchards/specialty crops to lower soil temperature and reduce fruit sunburn.</span></li>
+                                        <li class="flex items-start"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2 mt-1"><span><strong>Windbreaks:</strong> plant or use temporary windbreaks to reduce hot, desiccating winds which increase plant water loss.</span></li>
+                                        <li class="flex items-start"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2 mt-1"><span><strong>Nutrition:</strong> avoid heavy nitrogen top-dressings during extreme heat; apply potassium/calcium-based foliar feeds to improve stress tolerance if recommended by extension.</span></li>
+                                        <li class="flex items-start"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2 mt-1"><span><strong>Livestock:</strong> provide shaded, ventilated housing, cool drinking water, and reduce grazing during peak heat; consider sprinklers for large animals where feasible.</span></li>
+                                        <li class="flex items-start"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2 mt-1"><span><strong>Worker safety:</strong> schedule labour early morning/late evening, provide potable water, shaded rest areas, and first-aid for heat exhaustion.</span></li>
+                                        <li class="flex items-start"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2 mt-1"><span><strong>Monitor & document:</strong> use thermometers/moisture sensors, record crop symptoms and photos for insurance/extension support.</span></li>
+                                    </ul>
+                                    <p class="mt-2 text-xs text-orange-700">Note: Always follow product labels and local extension advice before applying sprays; test new treatments on a small area first.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">When Heat Wave Strikes — Immediate Actions</h3>
+                    <div class="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <i data-feather="alert-circle" class="h-5 w-5 text-orange-600"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-sm font-medium text-orange-800">Immediate Steps</h4>
+                                <div class="mt-2 text-sm text-orange-700">
+                                    <ul class="space-y-2">
+                                        <li class="flex items-center"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2"><span>Water early morning and late evening; prioritise flowering and fruiting stages</span></li>
+                                        <li class="flex items-center"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2"><span>Apply mulch immediately to reduce evaporation</span></li>
+                                        <li class="flex items-center"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2"><span>Install temporary shade nets or covers for vulnerable plots</span></li>
+                                        <li class="flex items-center"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2"><span>Move livestock to shaded, ventilated areas and provide cool drinking water</span></li>
+                                        <li class="flex items-center"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2"><span>Avoid heavy field work during peak hours to reduce worker heat risk</span></li>
+                                        <li class="flex items-center"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2"><span>Delay or reduce nitrogenous fertiliser applications until conditions improve</span></li>
+                                        <li class="flex items-center"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2"><span>Consider foliar kaolin spray for sunburn protection where appropriate</span></li>
+                                        <li class="flex items-center"><input type="checkbox" class="rounded text-orange-600 focus:ring-orange-500 mr-2"><span>Document damage (photos, dates) and notify extension services if severe</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Irrigation Management</h3>
+                    <ul class="list-disc pl-5 mb-4 space-y-1 text-gray-700">
+                        <li>Water early morning (5-8 AM) or late evening (6-8 PM)</li>
+                        <li>Increase irrigation frequency but reduce duration</li>
+                        <li>Use drip irrigation for efficient water delivery</li>
+                        <li>Monitor soil moisture with moisture meters</li>
+                        <li>Avoid overhead irrigation during peak heat</li>
+                    </ul>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Shade and Protection</h3>
+                    <ul class="list-disc pl-5 mb-4 space-y-1 text-gray-700">
+                        <li>Install shade nets (30-50% shade)</li>
+                        <li>Use temporary covers for sensitive crops</li>
+                        <li>Plant windbreaks to reduce hot wind impact</li>
+                        <li>Apply kaolin clay spray for sunburn protection</li>
+                        <li>Use reflective mulches to reduce soil temperature</li>
+                    </ul>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Crop-Specific Measures</h3>
+                    <div class="space-y-3">
+                        <div class="border border-gray-200 rounded-lg p-3">
+                            <h4 class="font-medium text-gray-900 mb-1">Vegetables</h4>
+                            <p class="text-sm text-gray-700">Provide shade, increase watering, harvest early morning, use heat-tolerant varieties</p>
+                        </div>
+                        <div class="border border-gray-200 rounded-lg p-3">
+                            <h4 class="font-medium text-gray-900 mb-1">Fruits</h4>
+                            <p class="text-sm text-gray-700">Protect from sunburn, maintain soil moisture, avoid pruning during heat stress</p>
+                        </div>
+                        <div class="border border-gray-200 rounded-lg p-3">
+                            <h4 class="font-medium text-gray-900 mb-1">Cereals</h4>
+                            <p class="text-sm text-gray-700">Monitor grain filling stage, provide adequate irrigation, avoid late planting</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Heat-Tolerant Varieties</h3>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">Rice</h4>
+                        <p class="text-sm text-gray-600">Sahbhagi Dhan, DRR 42 - Tolerant to 40°C+ temperatures</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">Tomato</h4>
+                        <p class="text-sm text-gray-600">Arka Rakshak, Pusa Hybrid 2 - Heat-tolerant varieties</p>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h4 class="font-medium text-gray-900 mb-1">Cotton</h4>
+                        <p class="text-sm text-gray-600">RCH 659, Bunny - Heat and drought resistant</p>
+                    </div>
+                    
+                    <h3 class="text-lg font-medium text-gray-900 mt-6 mb-2">Monitoring Tools</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <i data-feather="thermometer" class="w-4 h-4 text-gray-500 mr-2"></i>
+                            <span class="text-sm text-gray-700">Soil temperature monitoring</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="droplet" class="w-4 h-4 text-gray-500 mr-2"></i>
+                            <span class="text-sm text-gray-700">Moisture sensors</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i data-feather="smartphone" class="w-4 h-4 text-gray-500 mr-2"></i>
+                            <span class="text-sm text-gray-700">Weather apps and alerts</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Emergency Resources -->
+        <div class="bg-white rounded-xl shadow-md p-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Emergency Resources</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <h3 class="font-medium text-gray-900 mb-2 flex items-center">
+                        <i data-feather="phone" class="w-5 h-5 text-red-500 mr-2"></i>
+                        Emergency Contacts
+                    </h3>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li><strong>National Disaster Helpline:</strong> 1078</li>
+                        <li><strong>Agriculture Dept:</strong> 1800-180-1551</li>
+                        <li><strong>PMFBY Insurance:</strong> 1800-11-6163</li>
+                        <li><strong>Local Agriculture Office:</strong> 011-2338-1234</li>
+                    </ul>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <h3 class="font-medium text-gray-900 mb-2 flex items-center">
+                        <i data-feather="download" class="w-5 h-5 text-blue-500 mr-2"></i>
+                        Downloadable Guides
+                    </h3>
+                    <ul class="space-y-2">
+                        <li>
+                            <a href="#" class="text-sm text-blue-600 hover:text-blue-800 flex items-center" onclick="downloadPDF('comprehensive-disaster-manual')">
+                                <i data-feather="file-text" class="w-4 h-4 mr-2"></i>
+                                Comprehensive Disaster Preparedness Manual (PDF)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-sm text-blue-600 hover:text-blue-800 flex items-center" onclick="downloadPDF('insurance-claim-process')">
+                                <i data-feather="file-text" class="w-4 h-4 mr-2"></i>
+                                Insurance Claim Process Step-by-Step (PDF)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-sm text-blue-600 hover:text-blue-800 flex items-center" onclick="downloadPDF('government-compensation-schemes')">
+                                <i data-feather="file-text" class="w-4 h-4 mr-2"></i>
+                                Government Compensation Schemes (PDF)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-sm text-blue-600 hover:text-blue-800 flex items-center" onclick="downloadPDF('flood-protection-guide')">
+                                <i data-feather="file-text" class="w-4 h-4 mr-2"></i>
+                                Flood Protection Guide - Government of India (PDF)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-sm text-blue-600 hover:text-blue-800 flex items-center" onclick="downloadPDF('pest-management-handbook')">
+                                <i data-feather="file-text" class="w-4 h-4 mr-2"></i>
+                                Pest Management Handbook - ICAR (PDF)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-sm text-blue-600 hover:text-blue-800 flex items-center" onclick="downloadPDF('disease-control-manual')">
+                                <i data-feather="file-text" class="w-4 h-4 mr-2"></i>
+                                Disease Control Manual - Ministry of Agriculture (PDF)
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <custom-footer></custom-footer>
+    
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+        feather.replace();
+        
+        // PDF download functionality
+        function downloadPDF(documentType) {
+            const pdfUrls = {
+                'comprehensive-disaster-manual': 'https://agricoop.gov.in/sites/default/files/Comprehensive_Disaster_Preparedness_Manual.pdf',
+                'insurance-claim-process': 'https://pmfby.gov.in/sites/default/files/Insurance_Claim_Process_Guide.pdf',
+                'government-compensation-schemes': 'https://agricoop.gov.in/sites/default/files/Government_Compensation_Schemes.pdf',
+                'flood-protection-guide': 'https://agricoop.gov.in/sites/default/files/Flood_Protection_Guide_GOI.pdf',
+                'pest-management-handbook': 'https://icar.org.in/sites/default/files/Pest_Management_Handbook_ICAR.pdf',
+                'disease-control-manual': 'https://agricoop.gov.in/sites/default/files/Disease_Control_Manual_MoA.pdf'
+            };
+            
+            const url = pdfUrls[documentType];
+            if (url) {
+                // Create a temporary link to download the PDF
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = documentType + '.pdf';
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                alert('PDF not available for this document type.');
+            }
+        }
+        
+        // Download entire webpage as PDF
+        function downloadWebpageAsPDF() {
+            const element = document.body;
+            const opt = {
+                margin: 1,
+                filename: 'disaster-prevention-guide.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            
+            html2pdf().set(opt).from(element).save();
+        }
+        
+        // Add download button for entire webpage
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadButton = document.createElement('button');
+            downloadButton.innerHTML = '<i data-feather="download" class="w-4 h-4 mr-2"></i>Download Resources';
+            downloadButton.className = 'bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center transition duration-200';
+            downloadButton.onclick = downloadWebpageAsPDF;
+            
+            const emergencyResources = document.querySelector('.bg-white.rounded-xl.shadow-md.p-6:last-child');
+            if (emergencyResources) {
+                const header = emergencyResources.querySelector('h2');
+                header.parentNode.insertBefore(downloadButton, header.nextSibling);
+                feather.replace();
+            }
+        });
+    </script>
+</body>
+</html>

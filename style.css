@@ -1,0 +1,302 @@
+:root {
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-serif: 'Merriweather', 'Noto Serif', serif;
+}
+
+/* Import readable, modern fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:wght@300;400;700&display=swap');
+
+/* Base styles */
+.font-serif {
+    font-family: var(--font-serif);
+}
+:root {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --text-primary: #92d01f;
+    --text-secondary: #e2e8f0;  /* Much lighter secondary text */
+    --accent-primary: #4ade80;  /* Brighter green */
+    --accent-secondary: #38bdf8; /* Brighter blue */
+    --border-color: #475569;    /* Lighter border */
+    --card-bg: #1e293b;
+    --base-font-size: 16px; /* comfortable base */
+}
+
+body {
+    font-family: var(--font-sans);
+    font-size: var(--base-font-size);
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings use serif for a friendly, readable contrast */
+h1, h2, h3, h4, h5 {
+    font-family: var(--font-serif);
+    color: var(--text-primary);
+    line-height: 1.25;
+    margin-top: 0.5rem;
+}
+
+h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 1.5rem; font-weight: 700; }
+h3 { font-size: 1.125rem; font-weight: 600; }
+p, li, a, span { font-size: 1rem; }
+
+.lead { font-size: 1.125rem; color: var(--text-secondary); }
+/* Text color utilities */
+.text-bright { color: var(--text-primary) !important; }
+.text-medium { color: var(--text-secondary) !important; }
+.text-accent { color: var(--accent-primary) !important; }
+.text-link { color: var(--accent-secondary) !important; }
+
+/* Links */
+a:not(.btn) {
+    color: var(--accent-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:not(.btn):hover {
+    color: var(--accent-primary);
+}
+
+/* Form labels and text inputs */
+label {
+    color: var(--text-primary) !important;
+    font-weight: 500 !important;  /* Slightly bolder labels */
+}
+
+input, textarea, select {
+    color: var(--text-primary) !important;
+    background-color: var(--bg-secondary) !important;
+    font-weight: 400 !important;
+}
+
+/* List items and paragraphs */
+p, li {
+    color: var(--text-primary);  /* Using primary color instead of secondary */
+    font-weight: 400;  /* Regular weight for better readability */
+}
+
+/* Secondary text that needs to be slightly dimmed */
+.text-dim {
+    color: var(--text-secondary);
+}
+
+/* Checkboxes and radio buttons */
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+    color: var(--text-primary) !important;
+}
+
+/* Make sure disabled elements are still readable */
+input:disabled,
+textarea:disabled,
+select:disabled {
+    color: var(--text-secondary) !important;
+    opacity: 0.8;
+}
+
+/* Hero section overlay */
+#hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.6));
+    z-index: 1;
+}
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+/* Focus styles for accessibility */
+button:focus, a:focus, input:focus, textarea:focus {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+/* Animation for cards */
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent-primary);
+}
+/* Loading spinner */
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+/* Dark mode components */
+.bg-white {
+    background-color: var(--bg-secondary) !important;
+}
+
+.bg-gray-50 {
+    background-color: var(--bg-primary) !important;
+}
+
+.text-gray-900 {
+    color: var(--text-primary) !important;
+}
+
+.text-gray-600, .text-gray-500 {
+    color: var(--text-secondary) !important;
+}
+
+.border-gray-200, .border-gray-300 {
+    border-color: var(--border-color) !important;
+}
+
+.bg-green-100 {
+    background-color: rgba(74, 222, 128, 0.1) !important;
+}
+
+.text-green-600 {
+    color: var(--accent-primary) !important;
+}
+
+.bg-green-600 {
+    background-color: var(--accent-primary) !important;
+}
+
+.hover\:bg-green-700:hover {
+    background-color: #22c55e !important;
+}
+
+/* Mobile menu animation */
+.mobile-menu {
+    transition: all 0.3s ease-in-out;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+}
+
+/* Tooltip styles */
+.tooltip-text {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+}
+
+/* Form inputs */
+input, select, textarea {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Tables */
+table {
+    background-color: var(--bg-secondary) !important;
+}
+
+th, td {
+    border-color: var(--border-color) !important;
+}
+
+/* Enhanced table styling for crop detail page */
+.table-enhanced {
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.table-enhanced thead {
+    background: linear-gradient(90deg, rgba(16,185,129,0.15), rgba(34,211,238,0.08));
+}
+
+.table-enhanced th {
+    color: var(--text-primary) !important;
+    font-weight: 600;
+    letter-spacing: .02em;
+}
+
+.table-enhanced td {
+    color: #cfe9da !important; /* soft green-tinted text */
+}
+
+.table-enhanced tbody tr:hover {
+    background-color: rgba(16,185,129,0.08) !important;
+}
+
+/* Alert banners */
+.bg-red-50 {
+    background-color: rgba(239, 68, 68, 0.1) !important;
+    border-color: rgba(239, 68, 68, 0.3) !important;
+}
+/* Supplier card styles */
+.supplier-card:hover .supplier-card-inner {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Price range input styles */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #10B981;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: #10B981;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+}
+
+/* Product card seed sample styles */
+.seed-sample {
+    transition: all 0.3s ease;
+}
+
+.product-card:hover .seed-sample {
+    transform: scale(1.1);
+}
+
+/* Tooltip styles */
+.tooltip {
+    position: relative;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: #1F2937;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}

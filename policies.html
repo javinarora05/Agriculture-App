@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Policies | KhetiMitra</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        /* minor responsive tweaks */
+        @media (max-width: 768px){
+            .filters-grid { grid-template-columns: 1fr !important; }
+        }
+    </style>
+    </head>
+<body class="bg-gray-50">
+    <custom-navbar></custom-navbar>
+    
+    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Government Policies & Schemes</h1>
+            <p class="text-gray-600">Access updated information on agricultural subsidies, insurance, and support programs</p>
+        </div>
+        
+        <!-- Search and Filters -->
+        <div class="bg-white rounded-lg shadow-md p-4 mb-8">
+            <div class="filters-grid grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <div class="relative">
+                        <input id="scheme-search" type="text" placeholder="Search for schemes..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        <i data-feather="search" class="absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+                <div>
+                    <select id="scheme-type" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        <option value="">All Scheme Types</option>
+                        <option value="income-support">Income Support</option>
+                        <option value="insurance">Insurance</option>
+                        <option value="loan">Loans</option>
+                        <option value="equipment">Equipment Support</option>
+                        <option value="irrigation">Irrigation</option>
+                        <option value="renewable-energy">Renewable Energy</option>
+                        <option value="market">Market/Trading</option>
+                        <option value="soil">Soil/Inputs</option>
+                        <option value="infra">Infrastructure</option>
+                        <option value="training">Training</option>
+                    </select>
+                </div>
+                <div>
+                    <select id="scheme-state" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        <option value="">All States/UTs</option>
+                        <option value="all">All India</option>
+                        <option value="andhra pradesh">Andhra Pradesh</option>
+                        <option value="arunachal pradesh">Arunachal Pradesh</option>
+                        <option value="assam">Assam</option>
+                        <option value="bihar">Bihar</option>
+                        <option value="chhattisgarh">Chhattisgarh</option>
+                        <option value="goa">Goa</option>
+                        <option value="gujarat">Gujarat</option>
+                        <option value="haryana">Haryana</option>
+                        <option value="himachal pradesh">Himachal Pradesh</option>
+                        <option value="jharkhand">Jharkhand</option>
+                        <option value="karnataka">Karnataka</option>
+                        <option value="kerala">Kerala</option>
+                        <option value="madhya pradesh">Madhya Pradesh</option>
+                        <option value="maharashtra">Maharashtra</option>
+                        <option value="manipur">Manipur</option>
+                        <option value="meghalaya">Meghalaya</option>
+                        <option value="mizoram">Mizoram</option>
+                        <option value="nagaland">Nagaland</option>
+                        <option value="odisha">Odisha</option>
+                        <option value="punjab">Punjab</option>
+                        <option value="rajasthan">Rajasthan</option>
+                        <option value="sikkim">Sikkim</option>
+                        <option value="tamil nadu">Tamil Nadu</option>
+                        <option value="telangana">Telangana</option>
+                        <option value="tripura">Tripura</option>
+                        <option value="uttar pradesh">Uttar Pradesh</option>
+                        <option value="uttarakhand">Uttarakhand</option>
+                        <option value="west bengal">West Bengal</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="jammu and kashmir">Jammu & Kashmir</option>
+                        <option value="ladakh">Ladakh</option>
+                        <option value="puducherry">Puducherry</option>
+                        <option value="andaman and nicobar islands">Andaman & Nicobar Islands</option>
+                        <option value="chandigarh">Chandigarh</option>
+                        <option value="dadra and nagar haveli and daman and diu">Dadra & Nagar Haveli and Daman & Diu</option>
+                        <option value="lakshadweep">Lakshadweep</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Latest Updates -->
+        <div class="mb-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-4">Latest Updates</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Update Card 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+                    <img src="http://static.photos/office/640x360/1" alt="PM-KISAN" class="w-full h-40 object-cover">
+                    <div class="p-5">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-medium mr-2">Subsidy</span>
+                            <span class="text-xs text-gray-500">Updated: 15 Oct 2023</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">PM-KISAN 13th Installment</h3>
+                        <p class="text-sm text-gray-600 mb-4">₹2,000 installment to be credited to beneficiary accounts by 30 November.</p>
+                        <a href="https://pmkisan.gov.in/" target="_blank" rel="noopener" class="text-green-600 font-medium flex items-center text-sm">
+                            Read more <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Update Card 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+                    <img src="http://static.photos/office/640x360/2" alt="PMFBY" class="w-full h-40 object-cover">
+                    <div class="p-5">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-medium mr-2">Insurance</span>
+                            <span class="text-xs text-gray-500">Updated: 10 Oct 2023</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">PMFBY Extended Deadline</h3>
+                        <p class="text-sm text-gray-600 mb-4">Last date for Rabi crop insurance varies by state. Check portal.</p>
+                        <a href="https://pmfby.gov.in/" target="_blank" rel="noopener" class="text-green-600 font-medium flex items-center text-sm">
+                            Read more <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Update Card 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+                    <img src="http://static.photos/office/640x360/3" alt="Solar Pump" class="w-full h-40 object-cover">
+                    <div class="p-5">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full font-medium mr-2">Equipment</span>
+                            <span class="text-xs text-gray-500">Updated: 5 Oct 2023</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Solar Pump Subsidy Increased</h3>
+                        <p class="text-sm text-gray-600 mb-4">Higher subsidy for small farmers under PM-KUSUM.</p>
+                        <a href="https://mnre.gov.in/pm-kusum/" target="_blank" rel="noopener" class="text-green-600 font-medium flex items-center text-sm">
+                            Read more <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- All Schemes -->
+        <div class="mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-gray-900">All Schemes</h2>
+                <span class="text-sm text-gray-500">Key running schemes</span>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <table id="schemes-table" class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Scheme</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Benefits</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Deadline</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr class="hover:bg-gray-50" data-type="income-support" data-states="all">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10 bg-green-100 rounded-full flex items-center justify-center">
+                                        <i data-feather="dollar-sign" class="h-5 w-5 text-green-600"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">PM-KISAN</div>
+                                        <div class="text-sm text-gray-500">Central Government</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Income Support</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">₹6,000/year in 3 installments</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Ongoing</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="https://pmkisan.gov.in/" target="_blank" rel="noopener" class="text-green-600 hover:text-green-900 text-sm font-medium">Official Site</a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50" data-type="insurance" data-states="all">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <i data-feather="shield" class="h-5 w-5 text-blue-600"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">PMFBY</div>
+                                        <div class="text-sm text-gray-500">Crop Insurance</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Insurance</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Premium from 1.5-5% of sum insured</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Seasonal</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="https://pmfby.gov.in/" target="_blank" rel="noopener" class="text-green-600 hover:text-green-900 text-sm font-medium">Official Site</a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50" data-type="loan" data-states="all">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10 bg-yellow-100 rounded-full flex items-center justify-center">
+                                        <i data-feather="credit-card" class="h-5 w-5 text-yellow-600"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Kisan Credit Card (KCC)</div>
+                                        <div class="text-sm text-gray-500">Loan Scheme</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Loan</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Up to ₹3 lakh at 4% interest</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Ongoing</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="https://www.myscheme.gov.in/schemes/kcc" target="_blank" rel="noopener" class="text-green-600 hover:text-green-900 text-sm font-medium">Official Info</a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50" data-type="irrigation" data-states="all">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                        <i data-feather="droplet" class="h-5 w-5 text-purple-600"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">PMKSY - Micro Irrigation</div>
+                                        <div class="text-sm text-gray-500">Irrigation Support</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-purple-800">Irrigation</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Subsidy for drip/sprinkler systems</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Ongoing</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="https://pmksy.gov.in/" target="_blank" rel="noopener" class="text-green-600 hover:text-green-900 text-sm font-medium">Official Site</a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50" data-type="renewable-energy" data-states="all">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10 bg-yellow-100 rounded-full flex items-center justify-center">
+                                        <i data-feather="sun" class="h-5 w-5 text-yellow-600"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">PM-KUSUM</div>
+                                        <div class="text-sm text-gray-500">Solar Pumps</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Renewable Energy</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Subsidy for solar pumps & grid-connect</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Ongoing</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="https://mnre.gov.in/pm-kusum/" target="_blank" rel="noopener" class="text-green-600 hover:text-green-900 text-sm font-medium">Official Site</a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50" data-type="market" data-states="all">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10 bg-green-100 rounded-full flex items-center justify-center">
+                                        <i data-feather="shopping-cart" class="h-5 w-5 text-green-600"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">e-NAM</div>
+                                        <div class="text-sm text-gray-500">National Agri Market</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Market</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Online trading platform access</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Ongoing</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="https://enam.gov.in/web/" target="_blank" rel="noopener" class="text-green-600 hover:text-green-900 text-sm font-medium">Official Site</a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50" data-type="soil" data-states="all">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10 bg-gray-100 rounded-full flex items-center justify-center">
+                                        <i data-feather="layers" class="h-5 w-5 text-gray-600"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Soil Health Card</div>
+                                        <div class="text-sm text-gray-500">Soil/Inputs</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Soil</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Soil testing & nutrient advice</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Ongoing</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="https://soilhealth.dac.gov.in/" target="_blank" rel="noopener" class="text-green-600 hover:text-green-900 text-sm font-medium">Official Site</a>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50" data-type="infra" data-states="all">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <i data-feather="package" class="h-5 w-5 text-blue-600"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Agri Infrastructure Fund</div>
+                                        <div class="text-sm text-gray-500">Infrastructure</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Infrastructure</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Debt financing for infra projects</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Ongoing</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="https://agriinfra.dac.gov.in/" target="_blank" rel="noopener" class="text-green-600 hover:text-green-900 text-sm font-medium">Official Site</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    
+    <custom-footer></custom-footer>
+    
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+        // Schemes filter & search
+        (function(){
+            const search = document.getElementById('scheme-search');
+            const typeSel = document.getElementById('scheme-type');
+            const stateSel = document.getElementById('scheme-state');
+            const rows = Array.from(document.querySelectorAll('#schemes-table tbody tr'));
+
+            function normalize(s){ return (s||'').toLowerCase(); }
+            function matchesState(rowStates, selected){
+                if (!selected) return true;
+                if (selected === 'all') return true;
+                return (rowStates||'').split(',').some(st => st.trim() === selected);
+            }
+            function applyFilters(){
+                const q = normalize(search?.value);
+                const t = normalize(typeSel?.value);
+                const st = normalize(stateSel?.value);
+                rows.forEach(r => {
+                    const text = normalize(r.textContent);
+                    const rType = normalize(r.getAttribute('data-type'));
+                    const rStates = normalize(r.getAttribute('data-states'));
+                    const okSearch = !q || text.includes(q);
+                    const okType = !t || rType === t;
+                    const okState = matchesState(rStates, st);
+                    r.style.display = (okSearch && okType && okState) ? '' : 'none';
+                });
+            }
+            [search, typeSel, stateSel].forEach(el => el && el.addEventListener('input', applyFilters));
+            [typeSel, stateSel].forEach(el => el && el.addEventListener('change', applyFilters));
+        })();
+    </script>
+    
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Policies | KhetiMitra</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-gray-50">
+    <custom-navbar></custom-navbar>
+    
+    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Government Policies & Schemes</h1>
+            <p class="text-gray-600">Access updated information on agricultural subsidies, insurance, and support programs</p>
+        </div>
+        
+        <!-- Search and Filters -->
+        <div class="bg-white rounded-lg shadow-md p-4 mb-8">
+            <div class="flex flex-col lg:flex-row gap-4">
+                <div class="flex-grow">
+                    <div class="relative">
+                        <input type="text" placeholder="Search for schemes..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        <i data-feather="search" class="absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                </div>
+                <select class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                    <option value="">All Scheme Types</option>
+                    <option value="subsidy">Subsidies</option>
+                    <option value="insurance">Insurance</option>
+                    <option value="loan">Loans</option>
+                    <option value="equipment">Equipment Support</option>
+                    <option value="training">Training</option>
+                </select>
+                <select class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                    <option value="">All States</option>
+                    <option value="punjab">Punjab</option>
+                    <option value="haryana">Haryana</option>
+                    <option value="up">Uttar Pradesh</option>
+                    <option value="maharashtra">Maharashtra</option>
+                    <option value="tamilnadu">Tamil Nadu</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Latest Updates -->
+        <div class="mb-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-4">Latest Updates</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Update Card 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+                    <img src="http://static.photos/office/640x360/1" alt="PM-KISAN" class="w-full h-40 object-cover">
+                    <div class="p-5">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-medium mr-2">Subsidy</span>
+                            <span class="text-xs text-gray-500">Updated: 15 Oct 2023</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">PM-KISAN 13th Installment</h3>
+                        <p class="text-sm text-gray-600 mb-4">₹2,000 installment to be credited to beneficiary accounts by 30 November.</p>
+                        <a href="#" class="text-green-600 font-medium flex items-center text-sm">
+                            Read more <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Update Card 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+                    <img src="http://static.photos/office/640x360/2" alt="PMFBY" class="w-full h-40 object-cover">
+                    <div class="p-5">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-medium mr-2">Insurance</span>
+                            <span class="text-xs text-gray-500">Updated: 10 Oct 2023</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">PMFBY Extended Deadline</h3>
+                        <p class="text-sm text-gray-600 mb-4">Last date for Rabi crop insurance extended to 30 November for Punjab and Haryana.</p>
+                        <a href="#" class="text-green-600 font-medium flex items-center text-sm">
+                            Read more <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Update Card 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition">
+                    <img src="http://static.photos/office/640x360/3" alt="Solar Pump" class="w-full h-40 object-cover">
+                    <div class="p-5">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full font-medium mr-2">Equipment</span>
+                            <span class="text-xs text-gray-500">Updated: 5 Oct 2023</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Solar Pump Subsidy Increased</h3>
+                        <p class="text-sm text-gray-600 mb-4">60% subsidy now available for small farmers installing solar water pumps.</p>
+                        <a href="#" class="text-green-600 font-medium flex items-center text-sm">
+                            Read more <i data-feather="arrow-right" class="ml-1 w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- All Schemes -->
+        <div class="mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-xl font-bold text-gray-900">All Schemes</h2>
+                <span class="text-sm text-gray-500">Showing 8 of 42 schemes</span>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Scheme</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Benefits</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Deadline</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <!-- Scheme 1 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10 bg-green-100 rounded-full flex items-center justify-center">
+                                        <i data-feather="dollar-sign" class="h-5 w-5 text-green-600"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">PM-KISAN</div>
+                                        <div class="text-sm text-gray-500">Central Government</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Income Support</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">₹6,000/year in 3 installments</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Ongoing</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="#" class="text-green-600 hover:text-green-900 text-sm font-medium">Apply Now</a>
+                            </td>
+                        </tr>
+                        
+                        <!-- Scheme 2 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <i data-feather="shield" class="h-5 w-5 text-blue-600"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">PMFBY</div>
+                                        <div class="text-sm text-gray-500">Crop Insurance</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">Insurance</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Premium from 1.5-5% of sum insured</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">30 Nov 2023</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="#" class="text-green-600 hover:text-green-900 text-sm font-medium">Apply Now</a>
+                            </td>
+                        </tr>
+                        
+                        <!-- Scheme 3 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10 bg-yellow-100 rounded-full flex items-center justify-center">
+                                        <i data-feather="credit-card" class="h-5 w-5 text-yellow-600"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">KCC</div>
+                                        <div class="text-sm text-gray-500">Loan Scheme</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Loan</span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-sm text-gray-900">Up to ₹3 lakh at 4% interest</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Ongoing</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <a href="#" class="text-green-600 hover:text-green-900 text-sm font-medium">Apply Now</a>
+                            </td>
+                        </tr>
+                        
+                        <!-- Scheme 4 -->
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-10 w-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                        <i data-feather="droplet" class="h-5 w-5 text-purple-600"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Micro Irrigation</div>
+                                        <div class="text-sm text-gray
+</body>
+</html>

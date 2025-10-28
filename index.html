@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KhetiMitra - Empowering Farmers</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        .fade-in {
+          animation: fadeInPage 1.2s cubic-bezier(0.4,0,0.2,1);
+        }
+        @keyframes fadeInPage {
+          from { opacity: 0; transform: translateY(40px); }
+          to { opacity: 1; transform: none; }
+        }
+
+        .infinite-spin {
+          display: inline-block;
+          animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <custom-navbar></custom-navbar>
+    
+    <!-- Hero Section -->
+    <section id="hero" class="relative overflow-hidden">
+        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('http://static.photos/agriculture/1920x1080/1')"></div>
+        <div class="absolute inset-0 z-0 bg-black bg-opacity-40"></div>
+<div class="relative z-10 max-w-7xl mx-auto px-4 py-24 sm:px-6 lg:px-8 text-center">
+            <h1 id="welcome-title" class="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">Empowering Farmers with Digital Tools</h1>
+            <p id="welcome-subtitle" class="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto drop-shadow-lg">Access crop information, marketplace, weather alerts, and government schemes - all in one place.</p>
+            <div class="flex justify-center">
+                <a href="#features" id="get-started" class="bg-white hover:bg-gray-100 text-green-600 px-6 py-3 rounded-lg font-medium shadow-lg transition duration-300 drop-shadow-lg">Explore Features</a>
+            </div>
+</div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Key Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature Card 1 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition duration-300">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="book-open" class="text-green-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Crop Information</h3>
+                    <p class="text-gray-600 mb-4">Detailed guides for 50+ crops including growing conditions, pests, and market prices.</p>
+                    <a href="crops.html" class="text-green-600 font-medium flex items-center">
+                        Explore crops <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Feature Card 2 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition duration-300">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="shopping-bag" class="text-green-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Seed Marketplace</h3>
+                    <p class="text-gray-600 mb-4">Buy quality seeds from trusted suppliers with verified farmer reviews.</p>
+                    <a href="marketplace.html" class="text-green-600 font-medium flex items-center">
+                        Visit marketplace <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Feature Card 3 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition duration-300">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="smartphone" class="text-green-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">SMS Reminders</h3>
+                    <p class="text-gray-600 mb-4">Get timely alerts for watering, fertilizing, and pest control.</p>
+                    <a href="reminders.html" class="text-green-600 font-medium flex items-center">
+                        Set up reminders <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Feature Card 4 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition duration-300">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="alert-triangle" class="text-green-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Disaster Prevention</h3>
+                    <p class="text-gray-600 mb-4">Early warnings and protection measures for floods, droughts, and pests.</p>
+                    <a href="disasters.html" class="text-green-600 font-medium flex items-center">
+                        Learn protection <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Feature Card 5 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-md hover:shadow-lg transition duration-300">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-4">
+                        <i data-feather="file-text" class="text-green-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Government Schemes</h3>
+                    <p class="text-gray-600 mb-4">Updated information on subsidies, insurance and loan programs.</p>
+                    <a href="policies.html" class="text-green-600 font-medium flex items-center">
+                        View schemes <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </a>
+                </div>
+</div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 bg-green-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12" style="color: #fff;">Our Impact</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-4xl font-bold mb-2">25,000+</div>
+                    <div class="text-lg">Farmers Helped</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">50+</div>
+                    <div class="text-lg">Crops Covered</div>
+                </div>
+                <div>
+                    <div id="impact-average" class="text-4xl font-bold mb-2">4.8</div>
+                    <div class="text-lg">Average Rating</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">12M+</div>
+                    <div class="text-lg">SMS Sent</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">What Farmers Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="flex -space-x-2">
+                            <img class="w-12 h-12 rounded-full" src="http://static.photos/people/1200x630/1" alt="Rajesh">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900">Rajesh Kumar</h4>
+                            <p class="text-gray-600">Wheat Farmer, Punjab</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-2">
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700">"The SMS reminders for irrigation saved my wheat crop during the drought last summer. The marketplace helped me find better quality seeds at lower prices."</p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="flex -space-x-2">
+                            <img class="w-12 h-12 rounded-full" src="http://static.photos/people/1200x630/2" alt="Priya">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900">Priya Devi</h4>
+                            <p class="text-gray-600">Vegetable Farmer, Tamil Nadu</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-2">
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-700">"The pest control advice in the crop guides helped me reduce pesticide use by 40%. I learned organic methods that work better and cost less."</p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="flex -space-x-2">
+                            <img class="w-12 h-12 rounded-full" src="http://static.photos/people/1200x630/3" alt="Vijay">
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900">Vijay Patel</h4>
+                            <p class="text-gray-600">Cotton Farmer, Gujarat</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-2">
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                        <i data-feather="star" class="w-5 h-5 text-gray-300 fill-gray-300"></i>
+                    </div>
+                    <p class="text-gray-700">"Through this platform I got PM-KISAN scheme money directly in my account. The step-by-step application guide made it very easy."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Reviews: submit and list -->
+    <section id="user-reviews" class="py-12 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl font-bold text-center text-gray-900 mb-6">Leave a Review</h2>
+            <div class="bg-white p-6 rounded-xl shadow-sm mb-6">
+                <form id="review-form" class="space-y-4">
+                    <div>
+                        <label for="review-text" class="block text-sm font-medium text-gray-700 mb-1">Your review</label>
+                        <textarea id="review-text" rows="4" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" placeholder="Tell us what you like or what we can improve" required></textarea>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div>
+                            <label for="review-rating" class="block text-sm font-medium text-gray-700 mb-1">Rating</label>
+                            <select id="review-rating" class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                                <option value="5">5 — Excellent</option>
+                                <option value="4">4 — Good</option>
+                                <option value="3">3 — Average</option>
+                                <option value="2">2 — Poor</option>
+                                <option value="1">1 — Very Poor</option>
+                            </select>
+                        </div>
+                        <div class="ml-auto">
+                            <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg">Submit Review</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-bold text-gray-900">Community Reviews</h3>
+                    <div class="text-sm text-gray-600">Average: <span id="average-rating">—</span> (<span id="review-count">0</span> reviews)</div>
+                </div>
+                <div id="reviews-list" class="space-y-4">
+                    <p class="text-sm text-gray-500">No reviews yet. Be the first to share your experience!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16" style="background-color: #000;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Ready to Grow Better?</h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">Join thousands of farmers who are increasing their yields and profits with KhetiMitra.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="signup.html" class="bg-green-600 hover:bg-green-700 px-6 py-3 rounded-lg font-medium shadow-md transition duration-300" style="color: #fff;">Create Free Account</a>
+            </div>
+        </div>
+    </section>
+
+    <custom-footer></custom-footer>
+
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          document.body.classList.add('fade-in');
+        });
+    </script>
+    <!-- Example infinite animation on the hero leaf icon -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const leaf = document.querySelector('#hero i[data-feather="book-open"]');
+          if (leaf) leaf.classList.add('infinite-spin');
+        });
+    </script>
+</body>
+</html>

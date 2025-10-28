@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Profile | KhetiMitra</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .fade-in { animation: fadeInPage 1.2s cubic-bezier(0.4,0,0.2,1); }
+        @keyframes fadeInPage { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+        .infinite-pulse { animation: pulse 1.5s infinite alternate cubic-bezier(0.4,0,0.2,1); }
+        @keyframes pulse { from { opacity: 1; transform: scale(1); } to { opacity: 0.7; transform: scale(1.08); } }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <custom-navbar></custom-navbar>
+    
+    <main class="max-w-2xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-xl shadow-md p-8">
+            <div class="text-center mb-8">
+                <div class="flex justify-center mb-4">
+                    <i data-feather="user-plus" class="w-12 h-12 text-green-600"></i>
+                </div>
+                <h1 id="page-title" class="text-2xl font-bold text-gray-900 mb-2">Complete Your Profile</h1>
+                <p id="page-subtitle" class="text-gray-600">Help us personalize your farming experience</p>
+            </div>
+            
+            <form id="profile-form" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="farm-name" class="block text-sm font-medium text-gray-700 mb-1" id="farm-name-label">Farm Name</label>
+                        <input type="text" id="farm-name" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500" placeholder="Enter your farm name">
+                    </div>
+                    
+                    <div>
+                        <label for="farm-size" class="block text-sm font-medium text-gray-700 mb-1" id="farm-size-label">Farm Size (hectares)</label>
+                        <input type="number" id="farm-size" required min="0.1" step="0.1" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500" placeholder="e.g., 2.5">
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="address" class="block text-sm font-medium text-gray-700 mb-1" id="address-label">Farm Address</label>
+                    <textarea id="address" required rows="3" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500" placeholder="Enter your complete farm address"></textarea>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label for="state" class="block text-sm font-medium text-gray-700 mb-1" id="state-label">State</label>
+                        <select id="state" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                            <option value="">Select State</option>
+                            <option value="punjab">Punjab</option>
+                            <option value="haryana">Haryana</option>
+                            <option value="uttar-pradesh">Uttar Pradesh</option>
+                            <option value="maharashtra">Maharashtra</option>
+                            <option value="karnataka">Karnataka</option>
+                            <option value="tamil-nadu">Tamil Nadu</option>
+                            <option value="andhra-pradesh">Andhra Pradesh</option>
+                            <option value="gujarat">Gujarat</option>
+                            <option value="rajasthan">Rajasthan</option>
+                            <option value="madhya-pradesh">Madhya Pradesh</option>
+                            <option value="west-bengal">West Bengal</option>
+                            <option value="bihar">Bihar</option>
+                            <option value="odisha">Odisha</option>
+                            <option value="kerala">Kerala</option>
+                            <option value="assam">Assam</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="district" class="block text-sm font-medium text-gray-700 mb-1">District</label>
+                        <input type="text" id="district" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500" placeholder="Enter district">
+                    </div>
+                    
+                    <div>
+                        <label for="pincode" class="block text-sm font-medium text-gray-700 mb-1">Pincode</label>
+                        <input type="text" id="pincode" required pattern="[0-9]{6}" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500" placeholder="123456">
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="crops-grown" class="block text-sm font-medium text-gray-700 mb-1" id="crops-grown-label">Main Crops Grown</label>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mt-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" value="rice" class="rounded text-green-600 focus:ring-green-500">
+                            <span class="ml-2 text-sm text-gray-700">Rice</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" value="wheat" class="rounded text-green-600 focus:ring-green-500">
+                            <span class="ml-2 text-sm text-gray-700">Wheat</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" value="cotton" class="rounded text-green-600 focus:ring-green-500">
+                            <span class="ml-2 text-sm text-gray-700">Cotton</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" value="sugarcane" class="rounded text-green-600 focus:ring-green-500">
+                            <span class="ml-2 text-sm text-gray-700">Sugarcane</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" value="potato" class="rounded text-green-600 focus:ring-green-500">
+                            <span class="ml-2 text-sm text-gray-700">Potato</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" value="tomato" class="rounded text-green-600 focus:ring-green-500">
+                            <span class="ml-2 text-sm text-gray-700">Tomato</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" value="soybean" class="rounded text-green-600 focus:ring-green-500">
+                            <span class="ml-2 text-sm text-gray-700">Soybean</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" value="mustard" class="rounded text-green-600 focus:ring-green-500">
+                            <span class="ml-2 text-sm text-gray-700">Mustard</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="experience" class="block text-sm font-medium text-gray-700 mb-1" id="experience-label">Farming Experience</label>
+                    <select id="experience" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        <option value="">Select Experience</option>
+                        <option value="beginner">Less than 1 year</option>
+                        <option value="intermediate">1-5 years</option>
+                        <option value="experienced">5-15 years</option>
+                        <option value="expert">More than 15 years</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="irrigation" class="block text-sm font-medium text-gray-700 mb-1" id="irrigation-label">Irrigation Method</label>
+                    <select id="irrigation" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        <option value="">Select Method</option>
+                        <option value="flood">Flood Irrigation</option>
+                        <option value="drip">Drip Irrigation</option>
+                        <option value="sprinkler">Sprinkler Irrigation</option>
+                        <option value="rainfed">Rainfed</option>
+                        <option value="mixed">Mixed Methods</option>
+                    </select>
+                </div>
+                
+                <div class="flex items-center">
+                    <input type="checkbox" id="newsletter" class="rounded text-green-600 focus:ring-green-500">
+                    <label for="newsletter" id="newsletter-label" class="ml-2 text-sm text-gray-700">
+                        Subscribe to farming tips and market updates
+                    </label>
+                </div>
+                
+                <button type="submit" id="save-button" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg font-medium shadow-sm transition">
+                    Complete Profile
+                </button>
+            </form>
+        </div>
+    </main>
+    
+    <custom-footer></custom-footer>
+    
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+        
+        // Profile creation functionality
+        document.getElementById('profile-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const farmName = document.getElementById('farm-name').value;
+            const farmSize = document.getElementById('farm-size').value;
+            const address = document.getElementById('address').value;
+            const state = document.getElementById('state').value;
+            const district = document.getElementById('district').value;
+            const pincode = document.getElementById('pincode').value;
+            const experience = document.getElementById('experience').value;
+            const irrigation = document.getElementById('irrigation').value;
+            const newsletter = document.getElementById('newsletter').checked;
+            
+            // Get selected crops
+            const selectedCrops = [];
+            document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+                if (checkbox.value) {
+                    selectedCrops.push(checkbox.value);
+                }
+            });
+            
+            // Validation
+            if (!farmName || !farmSize || !address || !state || !district || !pincode || !experience || !irrigation) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            if (selectedCrops.length === 0) {
+                alert('Please select at least one crop');
+                return;
+            }
+            
+            // Get existing user data
+            const userData = JSON.parse(localStorage.getItem('user') || '{}');
+            
+            // Add profile data
+            const profileData = {
+                farmName,
+                farmSize: parseFloat(farmSize),
+                address,
+                state,
+                district,
+                pincode,
+                crops: selectedCrops,
+                experience,
+                irrigation,
+                newsletter,
+                profileCompleted: true,
+                profileCreatedAt: new Date().toISOString()
+            };
+            
+            // Update user data
+            const updatedUserData = { ...userData, ...profileData };
+            localStorage.setItem('user', JSON.stringify(updatedUserData));
+            localStorage.setItem('hasProfile', 'true');
+            
+            // Show success message
+            alert('Profile created successfully!');
+            
+            // Redirect to home page
+            window.location.href = 'index.html';
+        });
+        
+        // Check if user is logged in
+        if (!localStorage.getItem('isLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+          document.body.classList.add('fade-in');
+          // Add infinite pulse to all icons in the profile header
+          document.querySelectorAll('.profile-header i').forEach(function(icon) {
+            icon.classList.add('infinite-pulse');
+          });
+        });
+    </script>
+</body>
+</html>

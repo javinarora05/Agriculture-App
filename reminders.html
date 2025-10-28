@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS Reminders | KhetiMitra</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .fade-in { animation: fadeInPage 1.2s cubic-bezier(0.4,0,0.2,1); }
+        @keyframes fadeInPage { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+        .infinite-pulse { animation: pulse 1.5s infinite alternate cubic-bezier(0.4,0,0.2,1); }
+        @keyframes pulse { from { opacity: 1; transform: scale(1); } to { opacity: 0.7; transform: scale(1.08); } }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <custom-navbar></custom-navbar>
+    
+    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="mb-8">
+            <h1 id="page-title" class="text-3xl font-bold text-gray-900 mb-2">SMS Reminder System</h1>
+            <p id="page-subtitle" class="text-gray-600">Get timely alerts for your crops based on growth stages and weather conditions</p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Add New Crop Form -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-xl shadow-md p-6 sticky top-6">
+                    <h2 id="add-crop-title" class="text-xl font-bold text-gray-900 mb-4">Add New Crop</h2>
+                    
+                    <form id="add-crop-form">
+                        <div class="mb-4">
+                            <label for="crop-type" class="block text-sm font-medium text-gray-700 mb-1" id="crop-type-label">Crop Type</label>
+                            <select id="crop-type" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                                <option value="">Select crop</option>
+                                <option value="rice">Rice</option>
+                                <option value="wheat">Wheat</option>
+                                <option value="maize">Maize</option>
+                                <option value="cotton">Cotton</option>
+                                <option value="potato">Potato</option>
+                                <option value="tomato">Tomato</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="planting-date" class="block text-sm font-medium text-gray-700 mb-1" id="planting-date-label">Planting Date</label>
+                            <input type="date" id="planting-date" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="field-size" class="block text-sm font-medium text-gray-700 mb-1" id="field-size-label">Field Size (hectares)</label>
+                            <input type="number" id="field-size" required min="0.1" step="0.1" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="location" class="block text-sm font-medium text-gray-700 mb-1" id="location-label">Location</label>
+                            <input type="text" id="location" required placeholder="Village/District/State" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1" id="phone-label">Phone Number</label>
+                            <input type="tel" id="phone" required placeholder="+91 " pattern="^\+?\d{10,13}$" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="language" class="block text-sm font-medium text-gray-700 mb-1" id="language-label">SMS Language</label>
+                            <select id="language" required class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-green-500 focus:border-green-500">
+                                <option value="en">English</option>
+                                <option value="hi">Hindi</option>
+                                <option value="ta">Tamil</option>
+                                <option value="te">Telugu</option>
+                                <option value="mr">Marathi</option>
+                            </select>
+                        </div>
+                        
+                        <h3 id="reminder-types" class="font-medium text-gray-900 mb-2">Reminder Types</h3>
+                        <div class="space-y-2 mb-6">
+                            <label class="flex items-center">
+                                <input type="checkbox" checked class="rounded text-green-600 focus:ring-green-500">
+                                <span id="watering" class="ml-2 text-sm text-gray-700">Watering reminders</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" checked class="rounded text-green-600 focus:ring-green-500">
+                                <span id="fertilizer" class="ml-2 text-sm text-gray-700">Fertilizer application</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" checked class="rounded text-green-600 focus:ring-green-500">
+                                <span id="pest" class="ml-2 text-sm text-gray-700">Pest monitoring</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" checked class="rounded text-green-600 focus:ring-green-500">
+                                <span id="weather" class="ml-2 text-sm text-gray-700">Weather warnings</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" checked class="rounded text-green-600 focus:ring-green-500">
+                                <span id="harvest" class="ml-2 text-sm text-gray-700">Harvest notification</span>
+                            </label>
+                        </div>
+                        
+                        <p class="form-error text-red-500 text-sm mb-3 hidden"></p>
+                        <button type="submit" id="save-button" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg font-medium shadow-sm transition">
+                            Save Crop & Start Reminders
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Active Crops Dashboard -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 id="active-crops" class="text-xl font-bold text-gray-900">Your Active Crops</h2>
+                        <span class="text-sm text-gray-500" id="crop-count">0 crops being tracked</span>
+                    </div>
+                    
+                    <!-- Active Crop Cards -->
+                    <div id="active-crop-cards" class="space-y-4">
+                        <!-- Crops will be dynamically added here -->
+                            </div>
+                            
+                    <!-- Empty state -->
+                    <div id="empty-state" class="text-center py-8">
+                        <i data-feather="seedling" class="w-16 h-16 text-gray-300 mx-auto mb-4"></i>
+                        <h3 id="no-crops" class="text-lg font-medium text-gray-900 mb-2">No crops being tracked</h3>
+                        <p id="add-first-crop" class="text-gray-500">Add your first crop to start receiving SMS reminders</p>
+                                </div>
+                            </div>
+    </main>
+    
+    <custom-footer></custom-footer>
+    
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+        
+        // Crop tracking system
+        let cropCounter = 0;
+        const activeCrops = [];
+        
+        function daysBetween(d1, d2) {
+            return Math.max(0, Math.floor((d2 - d1) / (1000*60*60*24)));
+        }
+
+        function estimatedDuration(crop) {
+            const map = { rice:120, wheat:130, maize:110, cotton:170, potato:110, tomato:95 };
+            return map[crop] || 120;
+        }
+
+        function updateCropCount() {
+            const count = activeCrops.length;
+            const cropCountEl = document.getElementById('crop-count');
+            const emptyStateEl = document.getElementById('empty-state');
+            
+            if (cropCountEl) {
+                cropCountEl.textContent = `${count} crops being tracked`;
+            }
+            
+            if (emptyStateEl) {
+                emptyStateEl.style.display = count === 0 ? 'block' : 'none';
+            }
+        }
+
+        function createCropCard(cropData) {
+            const plantedOn = new Date(cropData.plantingDate);
+            const today = new Date();
+            const duration = estimatedDuration(cropData.cropType);
+            const dayNum = daysBetween(plantedOn, today);
+            const progress = Math.min(100, Math.round((dayNum / duration) * 100));
+            const estHarvest = new Date(plantedOn.getTime() + duration*24*60*60*1000);
+            const estHarvestStr = estHarvest.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+
+            const card = document.createElement('div');
+            card.className = 'border border-gray-200 rounded-lg p-4 hover:shadow-md transition';
+            card.setAttribute('data-crop-id', cropData.id);
+            
+            card.innerHTML = `
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                        <h3 class="font-bold text-gray-900">${cropData.cropType.charAt(0).toUpperCase()+cropData.cropType.slice(1)}</h3>
+                        <p class="text-sm text-gray-600">Planted on ${plantedOn.toLocaleDateString()} • ${cropData.fieldSize} hectares • ${cropData.location}</p>
+                                </div>
+                                <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-medium">Active</span>
+                            </div>
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center">
+                                    <i data-feather="calendar" class="w-4 h-4 text-gray-500 mr-1"></i>
+                        <span class="text-sm text-gray-700">Day <span class="js-day">${dayNum}</span> of ${duration}</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i data-feather="bell" class="w-4 h-4 text-gray-500 mr-1"></i>
+                                    <span class="text-sm text-gray-700">Next: Water tomorrow AM</span>
+                                </div>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2 mb-3">
+                    <div class="bg-green-600 h-2 rounded-full js-progress" style="width: ${progress}%"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-500">
+                                <span>Planted</span>
+                    <span>Harvest (est. ${estHarvestStr})</span>
+                            </div>
+                            <div class="flex justify-end gap-2 mt-4">
+                    <button class="edit-crop text-sm text-gray-600 hover:text-gray-900 flex items-center" data-crop-id="${cropData.id}">
+                                    <i data-feather="edit" class="w-4 h-4 mr-1"></i> Edit
+                                </button>
+                    <button class="delete-crop text-sm text-gray-600 hover:text-gray-900 flex items-center" data-crop-id="${cropData.id}">
+                                    <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete
+                                </button>
+                    <button class="mark-harvested text-sm text-green-600 hover:text-green-800 flex items-center" data-crop-id="${cropData.id}">
+                                    <i data-feather="check-circle" class="w-4 h-4 mr-1"></i> Mark Harvested
+                                </button>
+                            </div>
+            `;
+            
+            return card;
+        }
+
+        function addCropCard(cropData) {
+            const container = document.getElementById('active-crop-cards');
+            if (!container) return;
+            
+            const card = createCropCard(cropData);
+            container.appendChild(card);
+            
+            // Add event listeners
+            card.querySelector('.delete-crop').addEventListener('click', () => deleteCrop(cropData.id));
+            card.querySelector('.edit-crop').addEventListener('click', () => editCrop(cropData.id));
+            card.querySelector('.mark-harvested').addEventListener('click', () => markHarvested(cropData.id));
+            
+            // Live tracking
+            const progressEl = card.querySelector('.js-progress');
+            const dayEl = card.querySelector('.js-day');
+            const plantedOn = new Date(cropData.plantingDate);
+            const duration = estimatedDuration(cropData.cropType);
+            
+            const timer = setInterval(() => {
+                const now = new Date();
+                const d = daysBetween(plantedOn, now);
+                const p = Math.min(100, Math.round((d / duration) * 100));
+                if (dayEl) dayEl.textContent = d;
+                if (progressEl) progressEl.style.width = p + '%';
+                if (p >= 100) clearInterval(timer);
+            }, 60000);
+            
+            cropData.timer = timer;
+            activeCrops.push(cropData);
+            updateCropCount();
+            
+            if (typeof feather !== 'undefined') feather.replace();
+        }
+
+        function deleteCrop(cropId) {
+            if (confirm('Are you sure you want to delete this crop tracking?')) {
+                const cropIndex = activeCrops.findIndex(crop => crop.id === cropId);
+                if (cropIndex !== -1) {
+                    // Clear timer
+                    if (activeCrops[cropIndex].timer) {
+                        clearInterval(activeCrops[cropIndex].timer);
+                    }
+                    activeCrops.splice(cropIndex, 1);
+                }
+                
+                // Remove card from DOM
+                const card = document.querySelector(`[data-crop-id="${cropId}"]`);
+                if (card) {
+                    card.remove();
+                }
+                
+                updateCropCount();
+                alert('Crop tracking deleted');
+            }
+        }
+
+        function editCrop(cropId) {
+            const crop = activeCrops.find(c => c.id === cropId);
+            if (!crop) return;
+            
+            // Populate form with existing data
+            document.getElementById('crop-type').value = crop.cropType;
+            document.getElementById('planting-date').value = crop.plantingDate;
+            document.getElementById('field-size').value = crop.fieldSize;
+            document.getElementById('location').value = crop.location;
+            document.getElementById('phone').value = crop.phone;
+            document.getElementById('language').value = crop.language;
+            
+            // Delete the old crop
+            deleteCrop(cropId);
+            
+            // Scroll to form
+            document.getElementById('add-crop-form').scrollIntoView({ behavior: 'smooth' });
+            alert('Crop details loaded for editing');
+        }
+
+        function markHarvested(cropId) {
+            if (confirm('Mark this crop as harvested?')) {
+                const cropIndex = activeCrops.findIndex(crop => crop.id === cropId);
+                if (cropIndex !== -1) {
+                    // Clear timer
+                    if (activeCrops[cropIndex].timer) {
+                        clearInterval(activeCrops[cropIndex].timer);
+                    }
+                    activeCrops.splice(cropIndex, 1);
+                }
+                
+                // Remove card from DOM
+                const card = document.querySelector(`[data-crop-id="${cropId}"]`);
+                if (card) {
+                    card.remove();
+                }
+                
+                updateCropCount();
+                alert('Crop marked as harvested');
+            }
+        }
+
+        // Form submission
+        document.getElementById('add-crop-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const cropType = document.getElementById('crop-type').value;
+            const plantingDate = document.getElementById('planting-date').value;
+            const fieldSize = document.getElementById('field-size').value;
+            const location = document.getElementById('location').value;
+            const phone = document.getElementById('phone').value;
+            const language = document.getElementById('language').value;
+            const errorEl = document.querySelector('.form-error');
+
+            if (!cropType || !plantingDate || !fieldSize || !location || !phone) {
+                if (errorEl) {
+                    errorEl.textContent = 'Please fill all required fields';
+                    errorEl.classList.remove('hidden');
+                }
+                return;
+            }
+            
+            if (errorEl) errorEl.classList.add('hidden');
+
+            const cropData = {
+                id: ++cropCounter,
+                cropType,
+                plantingDate,
+                fieldSize,
+                location,
+                phone,
+                language
+            };
+
+            addCropCard(cropData);
+            document.getElementById('add-crop-form').reset();
+            alert('Crop saved and tracking started!');
+        });
+
+        // Initialize
+        updateCropCount();
+
+        document.addEventListener('DOMContentLoaded', function() {
+          document.body.classList.add('fade-in');
+          // Add infinite pulse to all icons in the reminders header
+          document.querySelectorAll('.reminders-header i').forEach(function(icon) {
+            icon.classList.add('infinite-pulse');
+          });
+        });
+    </script>
+</body>
+</html>
