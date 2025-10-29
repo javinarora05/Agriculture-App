@@ -93,7 +93,7 @@ class QRCheckout extends HTMLElement {
     const amount = this.getAttribute('amount') || '0';
     const qrImg = this.shadowRoot.querySelector('.qr-image');
   const upi = `upi://pay?pa=khetimitra@upi&pn=KhetiMitra&am=${amount}&cu=INR`;
-    qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(upi)}`;
+    qrImg.src = `https://github.com/javinarora05/Agriculture-App/blob/main/upi.jpg?raw=true${encodeURIComponent(upi)}`;
 
     this.shadowRoot.querySelector('.qr-modal').classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -104,5 +104,6 @@ class QRCheckout extends HTMLElement {
     document.body.style.overflow = '';
   }
 }
+
 
 customElements.define('qr-checkout', QRCheckout);
